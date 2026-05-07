@@ -15,133 +15,174 @@
   --purple:#6b4fa0;--purple-light:#f0ebf9;
   --green:#2e7a4f;--green-light:#e6f4ed;
   --text:#1a1a2e;--text-muted:#6b7280;
-  --border:#e5e0d8;--bg:#faf8f5;
+  --border:#e5e0d8;--bg:#faf8f5;--white:#fff;
 }
-body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);font-size:15px;line-height:1.65}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);font-size:15px;line-height:1.65;min-height:100vh}
 
 /* HERO */
-.hero{background:linear-gradient(160deg,#0d4a63 0%,#1a6b8a 45%,#2a8fa8 100%);color:white;padding:64px 24px 60px;text-align:center;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;bottom:-2px;left:0;right:0;height:44px;background:var(--bg);clip-path:ellipse(55% 100% at 50% 100%)}
-.hero-badge{display:inline-block;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);color:rgba(255,255,255,.9);font-size:12px;letter-spacing:2px;text-transform:uppercase;padding:5px 16px;border-radius:20px;margin-bottom:20px}
-.hero h1{font-family:'Playfair Display',serif;font-size:clamp(32px,7vw,56px);font-weight:600;margin-bottom:12px;line-height:1.15}
-.hero-sub{font-size:16px;color:rgba(255,255,255,.75);margin-bottom:28px}
+.hero{background:linear-gradient(160deg,#0d4a63 0%,#1a6b8a 45%,#2a8fa8 100%);color:white;padding:52px 24px 64px;text-align:center;position:relative;overflow:hidden}
+.hero::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:44px;background:var(--bg);clip-path:ellipse(55% 100% at 50% 100%)}
+.hero-badge{display:inline-block;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);color:rgba(255,255,255,.9);font-size:12px;letter-spacing:2px;text-transform:uppercase;padding:5px 16px;border-radius:20px;margin-bottom:18px}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(30px,7vw,52px);font-weight:600;margin-bottom:10px;line-height:1.15}
+.hero-sub{font-size:15px;color:rgba(255,255,255,.75);margin-bottom:24px}
 .hero-pills{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
-.hero-pill{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);color:white;font-size:13px;padding:6px 14px;border-radius:20px}
+.hero-pill{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);color:white;font-size:12px;padding:5px 13px;border-radius:20px}
 
-/* LAYOUT */
-.container{max-width:780px;margin:0 auto;padding:0 20px}
-.section-title{font-family:'Playfair Display',serif;font-size:22px;font-weight:600;color:var(--text);margin-bottom:16px}
+/* NAV TABS */
+.nav-wrap{position:sticky;top:0;z-index:100;background:white;border-bottom:1px solid var(--border);box-shadow:0 1px 8px rgba(0,0,0,.06)}
+.nav-inner{max-width:780px;margin:0 auto;display:flex;overflow-x:auto;scrollbar-width:none}
+.nav-inner::-webkit-scrollbar{display:none}
+.nav-tab{flex:1;min-width:120px;padding:14px 8px;text-align:center;font-size:13px;font-weight:500;color:var(--text-muted);cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;transition:all .2s;user-select:none}
+.nav-tab:hover{color:var(--text)}
+.nav-tab.active{color:var(--sea);border-bottom-color:var(--sea)}
+.nav-tab .tab-icon{display:block;font-size:18px;margin-bottom:2px}
+
+/* PAGES */
+.page{display:none}
+.page.active{display:block}
+
+/* CONTAINER */
+.container{max-width:780px;margin:0 auto;padding:0 20px 60px}
+.section-title{font-family:'Playfair Display',serif;font-size:22px;font-weight:600;color:var(--text);margin-bottom:16px;padding-top:36px}
+.section-sub{font-size:14px;color:var(--text-muted);margin-top:-10px;margin-bottom:20px}
 
 /* INFO CARDS */
-.info-section{padding:40px 0 28px}
-.info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin-bottom:32px}
 .info-card{background:white;border:1px solid var(--border);border-radius:12px;padding:16px}
-.info-card-label{font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--text-muted);margin-bottom:6px}
-.info-card-value{font-size:15px;font-weight:500;color:var(--text)}
+.info-card-label{font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--text-muted);margin-bottom:5px}
+.info-card-value{font-size:14px;font-weight:500;color:var(--text);line-height:1.5}
 
-/* RESERVATIONS */
-.reservations{background:var(--terra-light);border:1px solid #f0b89a;border-radius:14px;padding:20px 24px;margin:0 0 28px}
-.reservations h3{font-size:13px;font-weight:500;color:var(--terra);text-transform:uppercase;letter-spacing:1px;margin-bottom:12px}
-.res-item{display:flex;align-items:flex-start;gap:12px;padding:8px 0;border-bottom:1px solid rgba(196,92,46,.12)}
-.res-item:last-child{border-bottom:none}
-.res-dot{width:8px;height:8px;border-radius:50%;background:var(--terra);margin-top:6px;flex-shrink:0}
-.res-name{font-weight:500;font-size:14px}
-.res-tel{font-size:13px;color:var(--text-muted)}
+/* FLIGHT CARD */
+.flight-row{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:8px;background:white;border:1px solid var(--border);border-radius:14px;padding:20px;margin-bottom:12px}
+.flight-airport{font-size:22px;font-weight:600;font-family:'Playfair Display',serif}
+.flight-city{font-size:11px;color:var(--text-muted);margin-top:1px}
+.flight-time{font-size:15px;font-weight:500;margin-top:4px}
+.flight-arrow{text-align:center;color:var(--sea);font-size:20px}
+.flight-meta{font-size:11px;color:var(--text-muted);text-align:center;margin-top:4px}
+.flight-num{display:inline-block;background:var(--sea-light);color:var(--sea);font-size:11px;padding:2px 8px;border-radius:8px;font-weight:500}
 
-/* MARKETS SECTION */
-.markets-section{margin-bottom:32px}
+/* MARKETS */
 .market-tabs{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap}
 .market-tab{padding:7px 16px;border-radius:20px;border:1px solid var(--border);background:white;font-size:13px;cursor:pointer;color:var(--text-muted);transition:all .15s}
 .market-tab.active{background:var(--green-light);border-color:#9fcfb8;color:var(--green);font-weight:500}
 .market-panel{display:none}
 .market-panel.active{display:block}
-.market-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
-.market-card{background:white;border:1px solid var(--border);border-radius:12px;padding:16px;position:relative}
-.market-card-name{font-size:14px;font-weight:500;margin-bottom:4px}
+.market-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin-bottom:16px}
+.market-card{background:white;border:1px solid var(--border);border-radius:12px;padding:16px}
+.market-card-name{font-size:14px;font-weight:500;margin-bottom:3px}
 .market-card-addr{font-size:12px;color:var(--text-muted);margin-bottom:8px}
-.market-card-hours{font-size:12px;color:var(--text-muted);margin-bottom:10px;line-height:1.5}
-.market-badge{display:inline-block;font-size:11px;padding:2px 8px;border-radius:10px;background:var(--green-light);color:var(--green);margin-bottom:6px}
-.market-badge.warning{background:#fff3e0;color:#b45309}
-.market-rating{font-size:12px;color:var(--text-muted);margin-bottom:8px}
-.market-tip{font-size:12px;color:var(--text-muted);font-style:italic;border-top:1px solid var(--border);padding-top:8px;margin-top:4px;line-height:1.4}
-.market-map-btn{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--sea);text-decoration:none;padding:5px 12px;border:1px solid #b5d4e8;border-radius:8px;margin-top:4px;background:var(--sea-light)}
-.market-map-btn:hover{background:#d0e9f4}
+.mbadge{display:inline-block;font-size:11px;padding:2px 8px;border-radius:10px;background:var(--green-light);color:var(--green);margin-bottom:6px}
+.mbadge.warn{background:#fff3e0;color:#b45309}
+.market-hours{font-size:12px;color:var(--text-muted);line-height:1.6;margin-bottom:8px}
+.market-tip{font-size:12px;color:var(--text-muted);font-style:italic;border-top:1px solid var(--border);padding-top:8px;line-height:1.4}
+.map-btn{display:inline-flex;align-items:center;gap:5px;font-size:12px;color:var(--sea);text-decoration:none;padding:5px 12px;border:1px solid #b5d4e8;border-radius:8px;margin-top:10px;background:var(--sea-light)}
+.map-btn:hover{background:#d0e9f4}
+.market-map-embed{border-radius:12px;overflow:hidden;border:1px solid var(--border);margin-top:4px}
+.market-map-embed iframe{width:100%;height:240px;border:none;display:block}
+
+/* RESTAURANTS */
+.rest-card{background:white;border:1px solid var(--border);border-radius:14px;padding:20px;margin-bottom:14px;display:grid;grid-template-columns:1fr auto;gap:12px;align-items:start}
+.rest-name{font-size:16px;font-weight:500;margin-bottom:4px}
+.rest-location{font-size:13px;color:var(--text-muted);margin-bottom:8px}
+.rest-desc{font-size:13px;color:var(--text-muted);line-height:1.5;margin-bottom:10px}
+.rest-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+.rest-tag{font-size:11px;padding:2px 8px;border-radius:10px;background:var(--sea-light);color:var(--sea)}
+.rest-tag.must{background:var(--terra-light);color:var(--terra)}
+.rest-tag.star{background:var(--gold-light);color:#8a6a00}
+.rest-phone{display:flex;align-items:center;gap:6px;font-size:14px;font-weight:500;color:var(--terra);text-decoration:none;background:var(--terra-light);border:1px solid #f0b89a;padding:8px 14px;border-radius:10px;white-space:nowrap}
+.rest-phone:hover{background:#f5d5c5}
+.rest-reserve-note{font-size:12px;color:var(--terra);font-weight:500;margin-bottom:6px}
+.rest-maps-link{font-size:12px;color:var(--sea);text-decoration:none;display:inline-flex;align-items:center;gap:4px}
+.rest-maps-link:hover{text-decoration:underline}
+.rest-right{display:flex;flex-direction:column;align-items:flex-end;gap:8px}
+.rest-day-badge{font-size:11px;padding:3px 10px;border-radius:10px;background:var(--olive-light);color:var(--olive);white-space:nowrap;text-align:center}
+.rest-header{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap}
 
 /* DAYS */
-.days-section{padding-bottom:60px}
-.day-block{margin-bottom:20px;border-radius:16px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.07)}
-.day-header{display:flex;align-items:center;gap:14px;padding:18px 20px;cursor:pointer;user-select:none;transition:filter .15s}
+.days-section{padding-bottom:20px}
+.day-block{margin-bottom:18px;border-radius:16px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.07)}
+.day-header{display:flex;align-items:center;gap:14px;padding:16px 20px;cursor:pointer;user-select:none;transition:filter .15s}
 .day-header:hover{filter:brightness(.97)}
 .day-header.beach{background:var(--sea-light);border-bottom:1px solid #c5dde6}
 .day-header.road{background:var(--gold-light);border-bottom:1px solid #f0d88a}
 .day-header.culture{background:var(--olive-light);border-bottom:1px solid #c5d9b0}
 .day-header.finale{background:var(--purple-light);border-bottom:1px solid #c8b8e8}
-.day-num{font-family:'Playfair Display',serif;font-size:20px;font-weight:600;min-width:48px}
+.day-num{font-family:'Playfair Display',serif;font-size:19px;font-weight:600;min-width:48px}
 .day-header.beach .day-num{color:var(--sea)}
 .day-header.road .day-num{color:var(--gold)}
 .day-header.culture .day-num{color:var(--olive)}
 .day-header.finale .day-num{color:var(--purple)}
 .day-info{flex:1}
-.day-title-text{font-size:16px;font-weight:500;color:var(--text);line-height:1.3}
+.day-title-text{font-size:15px;font-weight:500;color:var(--text);line-height:1.3}
 .day-sub{font-size:12px;color:var(--text-muted);margin-top:2px}
-.day-chevron{font-size:11px;color:var(--text-muted);transition:transform .25s}
+.day-chevron{font-size:11px;color:var(--text-muted);transition:transform .25s;flex-shrink:0}
 .day-chevron.open{transform:rotate(180deg)}
 .day-body{background:white;border:1px solid var(--border);border-top:none;border-radius:0 0 16px 16px}
 
 /* PHOTO STRIP */
-.photo-strip{display:flex;gap:8px;padding:16px 20px 4px;overflow-x:auto;scrollbar-width:thin;scrollbar-color:var(--border) transparent}
+.photo-strip{display:flex;gap:8px;padding:16px 20px 8px;overflow-x:auto;scrollbar-width:thin;scrollbar-color:var(--border) transparent}
 .photo-strip::-webkit-scrollbar{height:4px}
 .photo-strip::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
-.photo-thumb{position:relative;flex-shrink:0}
-.photo-thumb img{height:130px;width:auto;min-width:180px;max-width:260px;border-radius:10px;object-fit:cover;border:1px solid var(--border);display:block}
+.photo-thumb{flex-shrink:0;position:relative}
+.photo-thumb a{display:block}
+.photo-thumb img{height:120px;width:auto;min-width:160px;max-width:240px;border-radius:10px;object-fit:cover;border:1px solid var(--border);display:block;transition:opacity .2s}
+.photo-thumb img:hover{opacity:.88}
 .photo-caption{font-size:10px;color:var(--text-muted);padding:4px 2px 0;text-align:center}
+.photo-gmaps{display:inline-flex;align-items:center;gap:4px;font-size:11px;color:var(--sea);text-decoration:none;margin-top:3px}
+.photo-gmaps:hover{text-decoration:underline}
 
 /* MAP */
-.day-map-wrap{margin:12px 20px 4px;border-radius:12px;overflow:hidden;border:1px solid var(--border)}
-.day-map-wrap iframe{width:100%;height:280px;border:none;display:block}
-.map-open-link{display:inline-flex;align-items:center;gap:5px;font-size:12px;color:var(--sea);padding:8px 20px;border-top:1px solid var(--border);text-decoration:none;background:var(--sea-light)}
+.day-map-wrap{margin:4px 20px 0;border-radius:12px;overflow:hidden;border:1px solid var(--border)}
+.day-map-wrap iframe{width:100%;height:260px;border:none;display:block}
+.map-open-link{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--sea);padding:9px 20px;border-top:1px solid var(--border);text-decoration:none;background:var(--sea-light)}
 .map-open-link:hover{background:#d0e9f4}
 
 /* STOPS */
-.stop{display:flex;gap:0;padding:0;position:relative}
-.stop-timeline{width:56px;flex-shrink:0;display:flex;flex-direction:column;align-items:center;padding:16px 0 0}
+.stop{display:flex;gap:0;position:relative}
+.stop-timeline{width:52px;flex-shrink:0;display:flex;flex-direction:column;align-items:center;padding:15px 0 0}
 .stop-time-label{font-size:11px;color:var(--text-muted);text-align:center;line-height:1.3}
-.stop-line{width:1px;flex:1;background:var(--border);margin-top:6px;min-height:16px}
+.stop-line{width:1px;flex:1;background:var(--border);margin-top:6px;min-height:14px}
 .stop:last-child .stop-line{display:none}
-.stop-dot-wrap{display:flex;flex-direction:column;align-items:center;padding:16px 0 0;width:24px;flex-shrink:0}
+.stop-dot-wrap{display:flex;flex-direction:column;align-items:center;padding:15px 0 0;width:22px;flex-shrink:0}
 .stop-dot{width:10px;height:10px;border-radius:50%;border:2px solid var(--border);background:white;flex-shrink:0;margin-top:2px}
 .stop-dot.beach{border-color:var(--sea);background:var(--sea-light)}
 .stop-dot.food{border-color:var(--olive);background:var(--olive-light)}
 .stop-dot.culture{border-color:var(--gold);background:var(--gold-light)}
-.stop-dot.drive{border-color:var(--border);background:#f5f5f5}
+.stop-dot.drive{border-color:#d1d5db;background:#f9fafb}
 .stop-dot.rest{border-color:var(--purple);background:var(--purple-light)}
-.stop-connector{width:1px;flex:1;background:var(--border);margin-top:6px;min-height:20px}
+.stop-connector{width:1px;flex:1;background:var(--border);margin-top:6px;min-height:18px}
 .stop:last-child .stop-connector{display:none}
-.stop-content{flex:1;padding:14px 20px 14px 8px;border-bottom:1px solid var(--border)}
+.stop-content{flex:1;padding:13px 18px 13px 8px;border-bottom:1px solid var(--border)}
 .stop:last-child .stop-content{border-bottom:none}
-.stop-name{font-size:14px;font-weight:500;color:var(--text);margin-bottom:3px}
+.stop-name{font-size:14px;font-weight:500;color:var(--text);margin-bottom:2px}
 .stop-desc{font-size:13px;color:var(--text-muted);line-height:1.5}
-.stop-tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:10px;margin-top:6px}
+.stop-links{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px;align-items:center}
+.stop-tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:10px}
 .tag-beach{background:var(--sea-light);color:var(--sea)}
 .tag-food{background:var(--olive-light);color:var(--olive)}
 .tag-culture{background:var(--gold-light);color:#8a6a00}
-.tag-drive{background:#f1f1f1;color:#666}
 .tag-rest{background:var(--purple-light);color:var(--purple)}
-.tip-strip{background:#fffbf0;border-top:1px solid #f0e4b0;padding:12px 20px;font-size:13px;color:#7a5f10;display:flex;gap:8px;align-items:flex-start}
-.tip-icon{flex-shrink:0;font-weight:500;margin-top:1px}
+.stop-gmaps{font-size:11px;color:var(--sea);text-decoration:none;display:inline-flex;align-items:center;gap:3px}
+.stop-gmaps:hover{text-decoration:underline}
+.tip-strip{background:#fffbf0;border-top:1px solid #f0e4b0;padding:11px 18px;font-size:13px;color:#7a5f10;display:flex;gap:8px;align-items:flex-start}
 
-footer{text-align:center;padding:32px 20px;font-size:12px;color:var(--text-muted);border-top:1px solid var(--border)}
+/* DIVIDER */
+.divider{height:1px;background:var(--border);margin:28px 0}
 
-@media(max-width:500px){
-  .hero{padding:48px 16px 48px}
+footer{text-align:center;padding:28px 20px;font-size:12px;color:var(--text-muted);border-top:1px solid var(--border)}
+
+@media(max-width:520px){
+  .rest-card{grid-template-columns:1fr}
+  .rest-right{align-items:flex-start}
   .photo-thumb img{height:100px;min-width:140px}
-  .day-map-wrap iframe{height:220px}
-  .stop-timeline{width:44px}
+  .day-map-wrap iframe{height:210px}
+  .nav-tab{min-width:90px;font-size:12px}
 }
 </style>
 </head>
 <body>
 
+<!-- HERO -->
 <div class="hero">
   <div class="hero-badge">Plan podróży</div>
   <h1>Chalkidiki<br>&amp; Meteora</h1>
@@ -154,147 +195,364 @@ footer{text-align:center;padding:32px 20px;font-size:12px;color:var(--text-muted
   </div>
 </div>
 
+<!-- NAV -->
+<nav class="nav-wrap">
+  <div class="nav-inner">
+    <div class="nav-tab active" onclick="showPage('plan',this)"><span class="tab-icon">🗓</span>Plan podróży</div>
+    <div class="nav-tab" onclick="showPage('travel',this)"><span class="tab-icon">✈️</span>Informacje o podróży</div>
+    <div class="nav-tab" onclick="showPage('practical',this)"><span class="tab-icon">🛒</span>Informacje praktyczne</div>
+    <div class="nav-tab" onclick="showPage('restaurants',this)"><span class="tab-icon">🍽</span>Restauracje</div>
+  </div>
+</nav>
+
+<!-- PAGE: PLAN -->
+<div class="page active" id="page-plan">
 <div class="container">
+  <h2 class="section-title">Plan dzień po dniu</h2>
+  <p class="section-sub">Kliknij dzień, żeby rozwinąć szczegóły z mapą i zdjęciami.</p>
+  <div id="days-container"></div>
+</div>
+</div>
 
-  <!-- INFO -->
-  <section class="info-section">
-    <h2 class="section-title">Informacje praktyczne</h2>
-    <div class="info-grid">
-      <div class="info-card">
-        <p class="info-card-label">Przylot</p>
-        <p class="info-card-value">27.06 · FR2552<br>POZ 19:40 → SKG 22:55</p>
-      </div>
-      <div class="info-card">
-        <p class="info-card-label">Wylot</p>
-        <p class="info-card-value">04.07 · FR2553<br>SKG 23:20 → POZ 00:40</p>
-      </div>
-      <div class="info-card">
-        <p class="info-card-label">Hotel Chalkidiki</p>
-        <p class="info-card-value">AlexMare Hotel<br>Skala Fourkas, Kassandra</p>
-      </div>
-      <div class="info-card">
-        <p class="info-card-label">Hotel Meteora</p>
-        <p class="info-card-value">Hotel Meteora<br>Kalambaka</p>
-      </div>
-      <div class="info-card">
-        <p class="info-card-label">Samochód</p>
-        <p class="info-card-value">Odbiór na lotnisku SKG<br>Zwrot 04.07 wieczorem</p>
-      </div>
-      <div class="info-card">
-        <p class="info-card-label">Waluta / napiwki</p>
-        <p class="info-card-value">Euro (€)<br>Napiwek ~10% w restauracjach</p>
-      </div>
-    </div>
-  </section>
+<!-- PAGE: TRAVEL INFO -->
+<div class="page" id="page-travel">
+<div class="container">
+  <h2 class="section-title">Loty</h2>
 
-  <!-- RESERVATIONS -->
-  <div class="reservations">
-    <h3>Rezerwacje restauracji – zadzwoń przed wyjazdem!</h3>
-    <div class="res-item">
-      <div class="res-dot"></div>
-      <div><p class="res-name">Panos Fish Tavern – Neos Marmaras</p><p class="res-tel">☎ +30 2375 072381 · ★4.8 · najlepsza tawerna na Chalkidiki · rezerwacja obowiązkowa</p></div>
+  <div class="flight-row">
+    <div>
+      <div class="flight-airport">POZ</div>
+      <div class="flight-city">Poznań</div>
+      <div class="flight-time">19:40</div>
     </div>
-    <div class="res-item">
-      <div class="res-dot"></div>
-      <div><p class="res-name">Taverna Tzitzikas – Porto Koufo</p><p class="res-tel">☎ +30 2375 051270 · ★4.7 · tzitzikas.eu</p></div>
+    <div class="flight-arrow">
+      <div>✈</div>
+      <div class="flight-meta">~3h lotu</div>
+      <div style="margin-top:6px"><span class="flight-num">FR2552</span></div>
     </div>
-    <div class="res-item">
-      <div class="res-dot"></div>
-      <div><p class="res-name">Taverna To Steki – Afytos</p><p class="res-tel">☎ +30 2374 091142 · ★4.6 · czynne od 11:00</p></div>
+    <div style="text-align:right">
+      <div class="flight-airport">SKG</div>
+      <div class="flight-city">Saloniki</div>
+      <div class="flight-time">22:55</div>
     </div>
-    <div class="res-item">
-      <div class="res-dot"></div>
-      <div><p class="res-name">Okyalos Sea Food – Neos Marmaras</p><p class="res-tel">☎ patrz okyalos.gr · ★4.4 · rezerwacja wskazana</p></div>
+  </div>
+  <p style="font-size:12px;color:var(--text-muted);margin-bottom:20px;text-align:center">27 czerwca 2026 (sobota) · Ryanair</p>
+
+  <div class="flight-row">
+    <div>
+      <div class="flight-airport">SKG</div>
+      <div class="flight-city">Saloniki</div>
+      <div class="flight-time">23:20</div>
+    </div>
+    <div class="flight-arrow">
+      <div>✈</div>
+      <div class="flight-meta">~3h lotu</div>
+      <div style="margin-top:6px"><span class="flight-num">FR2553</span></div>
+    </div>
+    <div style="text-align:right">
+      <div class="flight-airport">POZ</div>
+      <div class="flight-city">Poznań</div>
+      <div class="flight-time">00:40</div>
+    </div>
+  </div>
+  <p style="font-size:12px;color:var(--text-muted);margin-bottom:32px;text-align:center">4 lipca 2026 (sobota) · Ryanair</p>
+
+  <div class="divider"></div>
+  <h2 class="section-title" style="padding-top:0">Noclegi</h2>
+  <div class="info-grid">
+    <div class="info-card">
+      <p class="info-card-label">Hotel Chalkidiki</p>
+      <p class="info-card-value">AlexMare Hotel<br>Skala Fourkas, Kassandra<br><a href="https://maps.google.com/?q=AlexMare+Hotel+Fourka+Greece" target="_blank" style="font-size:12px;color:var(--sea)">▶ Google Maps</a></p>
+    </div>
+    <div class="info-card">
+      <p class="info-card-label">Pobyt Chalkidiki</p>
+      <p class="info-card-value">28 czerwca – 3 lipca<br>5 nocy</p>
+    </div>
+    <div class="info-card">
+      <p class="info-card-label">Hotel Meteora</p>
+      <p class="info-card-value">Hotel Meteora<br>Kalambaka<br><a href="https://maps.google.com/?q=Hotel+Meteora+Kalambaka+Greece" target="_blank" style="font-size:12px;color:var(--sea)">▶ Google Maps</a></p>
+    </div>
+    <div class="info-card">
+      <p class="info-card-label">Pobyt Meteora</p>
+      <p class="info-card-value">3–4 lipca<br>1 noc</p>
     </div>
   </div>
 
-  <!-- MARKETS -->
-  <section class="markets-section">
-    <h2 class="section-title">Markety spożywcze w pobliżu hoteli</h2>
-    <div class="market-tabs">
-      <button class="market-tab active" onclick="switchMarket('fourka',this)">Fourka (Chalkidiki)</button>
-      <button class="market-tab" onclick="switchMarket('kalambaka',this)">Kalambaka (Meteora)</button>
+  <div class="divider"></div>
+  <h2 class="section-title" style="padding-top:0">Samochód</h2>
+  <div class="info-grid">
+    <div class="info-card">
+      <p class="info-card-label">Odbiór</p>
+      <p class="info-card-value">27 czerwca, 23:00<br>Lotnisko Saloniki (SKG)</p>
     </div>
+    <div class="info-card">
+      <p class="info-card-label">Zwrot</p>
+      <p class="info-card-value">4 lipca, wieczorem<br>Lotnisko Saloniki (SKG)</p>
+    </div>
+    <div class="info-card">
+      <p class="info-card-label">Trasa całkowita</p>
+      <p class="info-card-value">~900 km łącznie<br>przez cały pobyt</p>
+    </div>
+    <div class="info-card">
+      <p class="info-card-label">Uwagi</p>
+      <p class="info-card-value">Winiety nie ma w Grecji.<br>Autostrady – pobór opłat.</p>
+    </div>
+  </div>
 
-    <div class="market-panel active" id="market-fourka">
-      <div class="market-cards">
-        <div class="market-card">
-          <span class="market-badge">★ 4.9 · najbliżej hotelu</span>
-          <p class="market-card-name">OK Grocery Super Market &amp; Deli</p>
-          <p class="market-card-addr">Skala Fourkas · dosłownie kilka kroków od plaży</p>
-          <p class="market-card-hours">Pon–Ndz: 8:00–01:00 (czynne do późna!)</p>
-          <p class="market-tip">Najlepsze ceny w okolicy, świeże produkty, miły personel. Dobry wybór piwa i wina. Idealny na zakupy przed plażą.</p>
-          <a class="market-map-btn" href="https://maps.google.com/?cid=15107003838437474399" target="_blank">▶ Otwórz w Mapach</a>
-        </div>
-        <div class="market-card">
-          <span class="market-badge">★ 4.5 · duży wybór</span>
-          <p class="market-card-name">Kritikos Super Market</p>
-          <p class="market-card-addr">Skala Fourkas · przy drodze głównej</p>
-          <p class="market-card-hours">Pon–Pt: 8:00–21:00 · Sob: 8:00–20:00</p>
-          <span class="market-badge warning">Niedz: zamknięte</span>
-          <p class="market-tip">Duży, dobrze zaopatrzony market z szerokim asortymentem i świeżymi produktami. Gotowe dania na ciepło. Uwaga: w niedzielę zamknięty.</p>
-          <a class="market-map-btn" href="https://maps.google.com/?cid=14487819017617473483" target="_blank">▶ Otwórz w Mapach</a>
-        </div>
-        <div class="market-card">
-          <span class="market-badge">★ 4.6 · czynny do 22:00</span>
-          <p class="market-card-name">Brōsis Mini Market</p>
-          <p class="market-card-addr">Skala Fourkas · w wiosce</p>
-          <p class="market-card-hours">Pon–Ndz: 8:00–22:00 (również niedziele!)</p>
-          <p class="market-tip">Najlepsze świeże owoce i warzywa w okolicy. Personel mówi po angielsku. Pracuje 7 dni w tygodniu – dobry wybór kiedy Kritikos zamknięty.</p>
-          <a class="market-map-btn" href="https://maps.google.com/?cid=1689065985897045753" target="_blank">▶ Otwórz w Mapach</a>
-        </div>
+  <div class="divider"></div>
+  <h2 class="section-title" style="padding-top:0">Przydatne informacje</h2>
+  <div class="info-grid">
+    <div class="info-card">
+      <p class="info-card-label">Waluta</p>
+      <p class="info-card-value">Euro (€)<br>Bankomaty wszędzie dostępne</p>
+    </div>
+    <div class="info-card">
+      <p class="info-card-label">Napiwki</p>
+      <p class="info-card-value">~10% w restauracjach<br>Nie są obowiązkowe</p>
+    </div>
+    <div class="info-card">
+      <p class="info-card-label">Numer alarmowy</p>
+      <p class="info-card-value">112 (ogólny)<br>166 (pogotowie)</p>
+    </div>
+    <div class="info-card">
+      <p class="info-card-label">Strefa czasowa</p>
+      <p class="info-card-value">UTC+3 (EEST)<br>+1h względem Polski</p>
+    </div>
+    <div class="info-card">
+      <p class="info-card-label">Pogoda (lipiec)</p>
+      <p class="info-card-value">30–35°C w dzień<br>Morze ~26°C</p>
+    </div>
+    <div class="info-card">
+      <p class="info-card-label">Język</p>
+      <p class="info-card-value">Grecki / angielski<br>w turystycznych miejscach</p>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- PAGE: PRACTICAL -->
+<div class="page" id="page-practical">
+<div class="container">
+  <h2 class="section-title">Markety spożywcze w pobliżu hoteli</h2>
+  <p class="section-sub">Przełącz między lokalizacjami hoteli.</p>
+
+  <div class="market-tabs">
+    <button class="market-tab active" onclick="switchMarket('fourka',this)">🏖 Fourka (Chalkidiki)</button>
+    <button class="market-tab" onclick="switchMarket('kalambaka',this)">⛰ Kalambaka (Meteora)</button>
+  </div>
+
+  <!-- FOURKA -->
+  <div class="market-panel active" id="market-fourka">
+    <div class="market-cards">
+      <div class="market-card">
+        <span class="mbadge">★ 4.9 · najbliżej hotelu</span>
+        <p class="market-card-name">OK Grocery Super Market &amp; Deli</p>
+        <p class="market-card-addr">Skala Fourkas · przy plaży</p>
+        <p class="market-hours">Pon–Ndz: <strong>8:00–01:00</strong> (czynny do późna!)</p>
+        <p class="market-tip">Najlepsze ceny w okolicy, świeże produkty, miły personel. Dobry wybór wina i piwa. Idealny na zakupy przed plażą.</p>
+        <a class="map-btn" href="https://maps.google.com/maps?q=OK+Grocery+Skala+Fourkas" target="_blank">▶ Google Maps</a>
       </div>
-      <div style="margin-top:14px;border-radius:12px;overflow:hidden;border:1px solid var(--border)">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2000!2d23.385!3d40.001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDAwJzAzLjYiTiAyM8KwMjMnMDYuNiJF!5e0!3m2!1spl!2spl!4v1" width="100%" height="260" style="border:none" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <div class="market-card">
+        <span class="mbadge">★ 4.5 · duży wybór</span>
+        <p class="market-card-name">Kritikos Super Market</p>
+        <p class="market-card-addr">Skala Fourkas · przy drodze głównej</p>
+        <p class="market-hours">Pon–Pt: 8:00–21:00 · Sob: 8:00–20:00<br><span style="color:#b45309">Niedz: <strong>zamknięte</strong></span></p>
+        <p class="market-tip">Duży, dobrze zaopatrzony market ze świeżymi produktami i gotowymi daniami na ciepło. Szeroki asortyment.</p>
+        <a class="map-btn" href="https://maps.google.com/maps?q=Kritikos+Supermarket+Fourka+Kassandra" target="_blank">▶ Google Maps</a>
+      </div>
+      <div class="market-card">
+        <span class="mbadge">★ 4.6 · czynny 7 dni</span>
+        <p class="market-card-name">Brōsis Mini Market</p>
+        <p class="market-card-addr">Skala Fourkas · w wiosce</p>
+        <p class="market-hours">Pon–Ndz: <strong>8:00–22:00</strong> (również niedziele!)</p>
+        <p class="market-tip">Najlepsze świeże owoce i warzywa. Personel mówi po angielsku. Dobry wybór gdy Kritikos zamknięty w niedzielę.</p>
+        <a class="map-btn" href="https://maps.google.com/maps?q=Brosis+mini+market+Skala+Fourkas" target="_blank">▶ Google Maps</a>
       </div>
     </div>
+    <div class="market-map-embed">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d3000!2d23.385!3d40.001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1ssupermarket+Skala+Fourkas!5e0!3m2!1spl!2spl!4v1" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
 
-    <div class="market-panel" id="market-kalambaka">
-      <div class="market-cards">
-        <div class="market-card">
-          <span class="market-badge">★ 4.5 · najlepszy w mieście</span>
-          <p class="market-card-name">Sklavenitis Supermarket</p>
-          <p class="market-card-addr">ul. G. Rammidi 14, Kalambaka · centrum</p>
-          <p class="market-card-hours">Pon–Pt: 8:00–21:00 · Sob: 8:00–20:00</p>
-          <span class="market-badge warning">Niedz: zamknięte</span>
-          <p class="market-tip">Największy i najlepszy market w Kalambace. Szeroki wybór produktów w tym wegańskich. Personel mówi po angielsku i chętnie doradzi.</p>
-          <a class="market-map-btn" href="https://maps.google.com/?cid=14793428547052568571" target="_blank">▶ Otwórz w Mapach</a>
-        </div>
-        <div class="market-card">
-          <span class="market-badge">★ 4.3 · Lidl</span>
-          <p class="market-card-name">Lidl Kalambaka</p>
-          <p class="market-card-addr">EO Trikalon-Ioanninon 156 · przy wyjeździe z miasta</p>
-          <p class="market-card-hours">Pon–Sob: 7:45–21:00</p>
-          <span class="market-badge warning">Niedz: zamknięte</span>
-          <p class="market-tip">Znana sieć z dobrymi cenami. Idealne na zakupy prowiantowe przed Meteorą. Duży parking. Świeże pieczywo z wypieku.</p>
-          <a class="market-map-btn" href="https://maps.google.com/?cid=7545244574516184114" target="_blank">▶ Otwórz w Mapach</a>
-        </div>
-        <div class="market-card">
-          <span class="market-badge">★ 4.0 · czynny do 23:30</span>
-          <p class="market-card-name">AB Shop &amp; Go</p>
-          <p class="market-card-addr">ul. Trikalon 47, Kalambaka · przy hotelu</p>
-          <p class="market-card-hours">Pon–Ndz: 8:00–23:30 (również niedziele!)</p>
-          <p class="market-tip">Jedyny czynny w niedzielę i wieczorami! Droższy niż pozostałe, ale ratuje kiedy reszta zamknięta. Dobry na szybkie zakupy po zwiedzaniu.</p>
-          <a class="market-map-btn" href="https://maps.google.com/?cid=12434478413011706710" target="_blank">▶ Otwórz w Mapach</a>
-        </div>
+  <!-- KALAMBAKA -->
+  <div class="market-panel" id="market-kalambaka">
+    <div class="market-cards">
+      <div class="market-card">
+        <span class="mbadge">★ 4.5 · najlepszy w mieście</span>
+        <p class="market-card-name">Sklavenitis Supermarket</p>
+        <p class="market-card-addr">ul. G. Rammidi 14, Kalambaka · centrum</p>
+        <p class="market-hours">Pon–Pt: 8:00–21:00 · Sob: 8:00–20:00<br><span style="color:#b45309">Niedz: <strong>zamknięte</strong></span></p>
+        <p class="market-tip">Największy i najlepiej oceniany market w Kalambace. Szeroki wybór, personel mówi po angielsku. Polecany przez turystów.</p>
+        <a class="map-btn" href="https://maps.google.com/maps?q=Sklavenitis+Kalambaka" target="_blank">▶ Google Maps</a>
       </div>
-      <div style="margin-top:14px;border-radius:12px;overflow:hidden;border:1px solid var(--border)">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2000!2d21.628!3d39.704!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMznCsDQyJzE0LjQiTiAyMcKwMzcnNDAuOCJF!5e0!3m2!1spl!2spl!4v1" width="100%" height="260" style="border:none" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <div class="market-card">
+        <span class="mbadge">★ 4.3 · najtańszy</span>
+        <p class="market-card-name">Lidl Kalambaka</p>
+        <p class="market-card-addr">EO Trikalon-Ioanninon 156 · przy wyjeździe</p>
+        <p class="market-hours">Pon–Sob: <strong>7:45–21:00</strong><br><span style="color:#b45309">Niedz: <strong>zamknięte</strong></span></p>
+        <p class="market-tip">Znane ceny, dobry wybór. Świeże pieczywo z wypieku. Duży parking. Idealne na zakupy przed wyjazdem do Meteory.</p>
+        <a class="map-btn" href="https://maps.google.com/maps?q=Lidl+Kalambaka+Greece" target="_blank">▶ Google Maps</a>
+      </div>
+      <div class="market-card">
+        <span class="mbadge">★ 4.0 · czynny do 23:30</span>
+        <p class="market-card-name">AB Shop &amp; Go</p>
+        <p class="market-card-addr">ul. Trikalon 47, Kalambaka · blisko hotelu</p>
+        <p class="market-hours">Pon–Ndz: <strong>8:00–23:30</strong> (również niedziele!)</p>
+        <p class="market-tip">Jedyny czynny w niedzielę i do późna. Droższy od pozostałych, ale ratuje wieczorem. Dobry na szybkie zakupy.</p>
+        <a class="map-btn" href="https://maps.google.com/maps?q=AB+Shop+Go+Kalambaka" target="_blank">▶ Google Maps</a>
       </div>
     </div>
-  </section>
+    <div class="market-map-embed">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d3000!2d21.628!3d39.704!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1ssupermarket+Kalambaka+Greece!5e0!3m2!1spl!2spl!4v1" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
 
-  <!-- DAYS -->
-  <section class="days-section">
-    <h2 class="section-title">Plan dzień po dniu</h2>
-    <div id="days-container"></div>
-  </section>
+  <div class="divider"></div>
+  <h2 class="section-title" style="padding-top:0">Co zabrać na dzikie plaże</h2>
+  <div class="info-grid">
+    <div class="info-card"><p class="info-card-label">Possidi &amp; Fava Beach</p><p class="info-card-value">Własny parasol, leżaki, duży zapas wody i jedzenia – brak barów i sklepów</p></div>
+    <div class="info-card"><p class="info-card-label">Snorkeling</p><p class="info-card-value">Maska i płetwy – najlepszy sprzęt na Kalogrii, Fava Beach i Porto Koufo</p></div>
+    <div class="info-card"><p class="info-card-label">Buty do wody</p><p class="info-card-value">Przydatne na kamienistych plażach (Kriopigi, Fava). Obowiązkowe dla dzieci</p></div>
+    <div class="info-card"><p class="info-card-label">Meteora &amp; Olynthos</p><p class="info-card-value">Wygodne buty – dużo schodów i chodzenia. Spódnica dla kobiet w klasztorach</p></div>
+  </div>
+</div>
+</div>
 
+<!-- PAGE: RESTAURANTS -->
+<div class="page" id="page-restaurants">
+<div class="container">
+  <h2 class="section-title">Restauracje</h2>
+  <p class="section-sub">Najlepsze miejsca na kolację. Przy tych oznaczonych 📞 zadzwoń z rezerwacją przed wyjazdem!</p>
+
+  <div style="background:var(--terra-light);border:1px solid #f0b89a;border-radius:14px;padding:16px 20px;margin-bottom:28px;font-size:14px;color:var(--terra)">
+    <strong>Ważne:</strong> Lipiec to szczyt sezonu w Grecji. W popularnych tawernach bez rezerwacji możecie nie dostać stolika, szczególnie na kolację. Dzwoń co najmniej 2–3 dni przed planowanym wyjazdem.
+  </div>
+
+  <div class="rest-card">
+    <div>
+      <div class="rest-header">
+        <div>
+          <p class="rest-name">Panos Fish Tavern</p>
+          <p class="rest-location">📍 Neos Marmaras, Sithonia</p>
+        </div>
+      </div>
+      <div class="rest-tags">
+        <span class="rest-tag star">★ 4.8 · 6469 opinii</span>
+        <span class="rest-tag must">📞 REZERWACJA OBOWIĄZKOWA</span>
+        <span class="rest-tag">owoce morza</span>
+      </div>
+      <p class="rest-desc">Najlepiej oceniana tawerna na całym Chalkidiki! Świeże owoce morza łowione tego samego dnia, makaron z langustynkami, ogromne porcje w bardzo dobrej cenie. Czynne od 12:30.</p>
+      <a class="rest-maps-link" href="https://maps.google.com/maps?q=Panos+Fish+Tavern+Neos+Marmaras" target="_blank">▶ Otwórz w Google Maps</a>
+    </div>
+    <div class="rest-right">
+      <span class="rest-day-badge">Dzień 3 · 30.06</span>
+      <a class="rest-phone" href="tel:+302375072381">📞 +30 2375 072381</a>
+    </div>
+  </div>
+
+  <div class="rest-card">
+    <div>
+      <div class="rest-header">
+        <div>
+          <p class="rest-name">Taverna Tzitzikas</p>
+          <p class="rest-location">📍 Porto Koufo, Sithonia</p>
+        </div>
+      </div>
+      <div class="rest-tags">
+        <span class="rest-tag star">★ 4.7 · 5507 opinii</span>
+        <span class="rest-tag must">📞 REZERWACJA WSKAZANA</span>
+        <span class="rest-tag">ryby · grill</span>
+      </div>
+      <p class="rest-desc">Najlepiej oceniana tawerna na całej Sithonii. Ośmiornica z grilla, sardynki, świeże ryby codziennie. Deser gratis dla całego stolika. Widok na zatokę Porto Koufo.</p>
+      <a class="rest-maps-link" href="https://maps.google.com/maps?q=Taverna+Tzitzikas+Porto+Koufo" target="_blank">▶ Otwórz w Google Maps</a>
+    </div>
+    <div class="rest-right">
+      <span class="rest-day-badge">Dzień 4 · 01.07</span>
+      <a class="rest-phone" href="tel:+302375051270">📞 +30 2375 051270</a>
+    </div>
+  </div>
+
+  <div class="rest-card">
+    <div>
+      <div class="rest-header">
+        <div>
+          <p class="rest-name">Taverna To Steki</p>
+          <p class="rest-location">📍 Afytos, Kassandra</p>
+        </div>
+      </div>
+      <div class="rest-tags">
+        <span class="rest-tag star">★ 4.6 · 2833 opinii</span>
+        <span class="rest-tag must">📞 REZERWACJA WSKAZANA</span>
+        <span class="rest-tag">mięso · ryby</span>
+      </div>
+      <p class="rest-desc">Legendarna tawerna w sercu pięknej wioski Afytos. Świeże ryby, jagnięcina z rusztu, grillowane mięsa. Klimatyczny ogród z widokiem. Czynne od 11:00.</p>
+      <a class="rest-maps-link" href="https://maps.google.com/maps?q=Taverna+To+Steki+Afytos" target="_blank">▶ Otwórz w Google Maps</a>
+    </div>
+    <div class="rest-right">
+      <span class="rest-day-badge">Dzień 1 · 28.06</span>
+      <a class="rest-phone" href="tel:+302374091142">📞 +30 2374 091142</a>
+    </div>
+  </div>
+
+  <div class="rest-card">
+    <div>
+      <div class="rest-header">
+        <div>
+          <p class="rest-name">Okyalos Sea Food Restaurant</p>
+          <p class="rest-location">📍 Neos Marmaras, Sithonia</p>
+        </div>
+      </div>
+      <div class="rest-tags">
+        <span class="rest-tag star">★ 4.4 · 2661 opinii</span>
+        <span class="rest-tag must">📞 REZERWACJA WSKAZANA</span>
+        <span class="rest-tag">owoce morza · widok</span>
+      </div>
+      <p class="rest-desc">Restauracja z tarasem z widokiem na morze. Makaron z homarami, nadziewane kalmary, grillowane krewetki. Świetna na ostatni wieczór przed wyjazdem z Chalkidiki.</p>
+      <a class="rest-maps-link" href="https://okyalos.gr" target="_blank">▶ okyalos.gr</a>
+    </div>
+    <div class="rest-right">
+      <span class="rest-day-badge">Dzień 5 · 02.07</span>
+      <div style="font-size:12px;color:var(--text-muted);text-align:right">Numer na stronie<br>okyalos.gr</div>
+    </div>
+  </div>
+
+  <div class="rest-card">
+    <div>
+      <div class="rest-header">
+        <div>
+          <p class="rest-name">Gorgona or Pullman</p>
+          <p class="rest-location">📍 Vourvourou, Sithonia</p>
+        </div>
+      </div>
+      <div class="rest-tags">
+        <span class="rest-tag star">★ 4.4 · 3009 opinii</span>
+        <span class="rest-tag">kuchnia grecka</span>
+        <span class="rest-tag">plac zabaw</span>
+      </div>
+      <p class="rest-desc">Tawerna nad samą wodą w kameralnej miejscowości rybackiej. Moussaka, nadziewana oberżyna, autentyczna kuchnia. Plac zabaw dla dzieci. Lody gratis na końcu posiłku!</p>
+      <a class="rest-maps-link" href="https://maps.google.com/maps?q=Gorgona+Vourvourou+Sithonia" target="_blank">▶ Otwórz w Google Maps</a>
+    </div>
+    <div class="rest-right">
+      <span class="rest-day-badge">Dzień 2 · 29.06</span>
+      <a class="rest-phone" href="tel:+302375091461">📞 +30 2375 091461</a>
+    </div>
+  </div>
+</div>
 </div>
 
 <footer>Chalkidiki &amp; Meteora 2026 · Plan wyjazdu rodzinnego · 27.06–04.07</footer>
 
 <script>
+// ---- NAV ----
+function showPage(id, tab) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('page-' + id).classList.add('active');
+  tab.classList.add('active');
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+// ---- MARKETS ----
 function switchMarket(id, btn) {
   document.querySelectorAll('.market-panel').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.market-tab').forEach(t => t.classList.remove('active'));
@@ -302,7 +560,8 @@ function switchMarket(id, btn) {
   btn.classList.add('active');
 }
 
-const tagLabels = { beach:'plaża', food:'restauracja', culture:'atrakcja', drive:'przejazd', rest:'nocleg' };
+// ---- DAYS DATA ----
+const tagLabels = { beach:'plaża', food:'restauracja', culture:'atrakcja', rest:'nocleg' };
 
 const days = [
   {
@@ -311,16 +570,16 @@ const days = [
     sub:'Lot wieczorny, nocny transfer na Chalkidiki',
     open:true,
     photos:[
-      {src:'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Thessaloniki_from_above.jpg/800px-Thessaloniki_from_above.jpg', alt:'Saloniki z lotu ptaka'},
-      {src:'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Halkidiki_Kassandra.jpg/800px-Halkidiki_Kassandra.jpg', alt:'Kassandra, Chalkidiki'},
+      {src:'https://live.staticflickr.com/65535/48002481716_8ae789b9e1_b.jpg', alt:'Lotnisko Saloniki', maps:'https://maps.google.com/?q=Thessaloniki+Airport+SKG'},
+      {src:'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Halkidiki_Kassandra.jpg/800px-Halkidiki_Kassandra.jpg', alt:'Kassandra z lotu ptaka', maps:'https://maps.google.com/?q=Kassandra+Chalkidiki+Greece'},
     ],
-    mapSrc:'https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d388000!2d23.0!3d40.35!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e0!4m5!1s0x14a839a3c8af3e91%3A0x85de6c8b9e6d4a70!2sSaloniki+Lotnisko!3m2!1d40.5196698!2d22.9706641!4m5!1s0x14a8b5b9f1bc9b41%3A0x1!2sFourka+Kassandra!3m2!1d40.002!2d23.384!5e0!3m2!1spl!2spl!4v1',
-    mapLink:'https://maps.google.com/maps/dir/Thessaloniki+Airport/Fourka+Kassandra+Greece',
+    mapSrc:'https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d400000!2d23.0!3d40.35!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e0!4m5!1s0x14a839a3c8af3e91%3A0x85de6c8b9e6d4a70!2sLotnisko+Saloniki!3m2!1d40.519!2d22.970!4m5!1s0x14a8b5b9f1b00001%3A0x1!2sFourka+Kassandra!3m2!1d40.002!2d23.384!5e0!3m2!1spl!2spl!4v1',
+    mapLink:'https://maps.google.com/maps/dir/Thessaloniki+Airport+SKG/Fourka+Kassandra+Greece',
     stops:[
-      {time:'19:40', type:'drive', name:'Wylot z Poznania (POZ)', desc:'Lot Ryanair FR2552. Czas lotu ok. 3 godz.'},
-      {time:'22:55', type:'drive', name:'Lądowanie w Salonikach (SKG)', desc:'Odbiór samochodu na lotnisku. Bagaże, dokumenty, tankowanie – i ruszamy.'},
-      {time:'23:30', type:'drive', name:'Transfer na Chalkidiki – ok. 1,5h', desc:'Nocna trasa przez Saloniki i most na Kassandrę. Dzieci śpią w samochodzie.'},
-      {time:'~01:00', type:'rest', name:'AlexMare Hotel Fourka – zameldowanie', desc:'Nocleg. Jutro zaczyna się prawdziwy urlop!'}
+      {time:'19:40', type:'drive', name:'Wylot z Poznania (POZ)', desc:'Lot Ryanair FR2552. Czas lotu ok. 3 godz.', maps:null},
+      {time:'22:55', type:'drive', name:'Lądowanie w Salonikach (SKG)', desc:'Odbiór samochodu na lotnisku. Bagaże, dokumenty, tankowanie.', maps:'https://maps.google.com/?q=Thessaloniki+Airport+SKG'},
+      {time:'23:30', type:'drive', name:'Transfer na Chalkidiki – ok. 1,5h', desc:'Nocna trasa przez Saloniki i most na Kassandrę. Dzieci śpią w samochodzie.', maps:null},
+      {time:'~01:00', type:'rest', name:'AlexMare Hotel Fourka', desc:'Zameldowanie i nocleg. Jutro zaczyna się prawdziwy urlop!', maps:'https://maps.google.com/?q=AlexMare+Hotel+Fourka+Greece'}
     ],
     tip:null
   },
@@ -330,19 +589,19 @@ const days = [
     sub:'Dzika plaża na cyplu, kolacja w najpiękniejszej wiosce',
     open:false,
     photos:[
-      {src:'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Possidi_Cape_Halkidiki.jpg/800px-Possidi_Cape_Halkidiki.jpg', alt:'Possidi Cape'},
-      {src:'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Afytos_Halkidiki.jpg/800px-Afytos_Halkidiki.jpg', alt:'Wioska Afytos'},
-      {src:'https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Kassandra_beach.jpg/800px-Kassandra_beach.jpg', alt:'Plaża Kassandra'},
+      {src:'https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Possidi_lighthouse.jpg/800px-Possidi_lighthouse.jpg', alt:'Latarnia Possidi', maps:'https://maps.google.com/?q=Possidi+Cape+Kassandra+Greece'},
+      {src:'https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Afitos_IMG_4033.jpg/800px-Afitos_IMG_4033.jpg', alt:'Wioska Afytos', maps:'https://maps.google.com/?q=Afytos+Kassandra+Greece'},
+      {src:'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Kassandra_beach_Greece.jpg/800px-Kassandra_beach_Greece.jpg', alt:'Plaże Kassandry', maps:'https://maps.google.com/?q=Kassandra+Chalkidiki+beaches'},
     ],
-    mapSrc:'https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d80000!2d23.37!3d40.03!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e0!4m5!1s0x14a8b5e1c0000001%3A0x1!2sFourka+Kassandra!3m2!1d40.002!2d23.384!4m5!1s0x14a8b28f58000001%3A0x1!2sAfytos+Kassandra!3m2!1d40.1!2d23.436!5e0!3m2!1spl!2spl!4v1',
-    mapLink:'https://maps.google.com/maps/dir/Fourka+Greece/Possidi+Cape+Greece/Afytos+Greece',
+    mapSrc:'https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d100000!2d23.38!3d40.02!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e0!4m5!1s0x14a8b5b9f1b00001%3A0x1!2sFourka!3m2!1d40.002!2d23.384!4m5!1s0x14a8b28f580001%3A0x1!2sAfytos!3m2!1d40.098!2d23.436!5e0!3m2!1spl!2spl!4v1',
+    mapLink:'https://maps.google.com/maps/dir/Fourka+Greece/Possidi+Cape+Kassandra/Afytos+Kassandra+Greece',
     stops:[
-      {time:'9:30', type:'drive', name:'Wyjazd z hotelu', desc:'Ok. 45 min do Possidi Cape.'},
-      {time:'10:15', type:'beach', name:'Possidi Cape ★4.6', desc:'Dzika plaża na samym cyplu Kassandry z widokiem na Olimp! Brak udogodnień – zabrać własny parasol, leżaki, wodę i jedzenie. Uwaga na prądy przy cyplu.'},
-      {time:'13:30', type:'drive', name:'Wyjazd do Afytos', desc:'Ok. 30 min na północ wzdłuż wybrzeża.'},
-      {time:'14:00', type:'culture', name:'Spacer po Afytos', desc:'Najpiękniejsza wioska Kassandry – kamienne uliczki, sklepiki, widok na morze z klifu.'},
-      {time:'16:00', type:'food', name:'Taverna To Steki ★4.6', desc:'Legendarna tawerna – świeże ryby, jagnięcina z rusztu. Tel: +30 2374 091142. Zadzwoń wcześniej!'},
-      {time:'19:00', type:'drive', name:'Powrót do hotelu', desc:'Ok. 15 min jazdy.'}
+      {time:'9:30', type:'drive', name:'Wyjazd z hotelu', desc:'Ok. 45 min do Possidi Cape.', maps:null},
+      {time:'10:15', type:'beach', name:'Possidi Cape', desc:'Dzika plaża na cyplu Kassandry z widokiem na Olimp! Brak udogodnień – zabrać parasol, leżaki, wodę i jedzenie. Uwaga na prądy przy cyplu.', maps:'https://maps.google.com/?q=Possidi+Cape+Kassandra+Greece'},
+      {time:'13:30', type:'drive', name:'Wyjazd do Afytos', desc:'Ok. 30 min na północ.', maps:null},
+      {time:'14:00', type:'culture', name:'Spacer po Afytos', desc:'Najpiękniejsza wioska Kassandry – kamienne uliczki, sklepiki, widok na morze z klifu.', maps:'https://maps.google.com/?q=Afytos+Kassandra+Greece'},
+      {time:'16:00', type:'food', name:'Taverna To Steki ★4.6', desc:'Legendarna tawerna – świeże ryby, jagnięcina z rusztu. Tel: +30 2374 091142. Zadzwoń wcześniej!', maps:'https://maps.google.com/?q=Taverna+To+Steki+Afytos+Greece'},
+      {time:'19:00', type:'drive', name:'Powrót do hotelu', desc:'Ok. 15 min jazdy.', maps:null}
     ],
     tip:'Na Possidi zabrać własny parasol, leżaki, duży zapas wody i jedzenia – brak sklepów i barów.'
   },
@@ -352,63 +611,63 @@ const days = [
     sub:'Najpiękniejsze turkusowe wody Chalkidiki',
     open:false,
     photos:[
-      {src:'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Kalogria_beach_Sithonia.jpg/800px-Kalogria_beach_Sithonia.jpg', alt:'Kalogria Beach'},
-      {src:'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Vourvourou_Sithonia.jpg/800px-Vourvourou_Sithonia.jpg', alt:'Vourvourou'},
-      {src:'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Sithonia_coast.jpg/800px-Sithonia_coast.jpg', alt:'Wybrzeże Sithonii'},
+      {src:'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Kalogria_Beach_Halkidiki.jpg/800px-Kalogria_Beach_Halkidiki.jpg', alt:'Kalogria Beach', maps:'https://maps.google.com/?q=Kalogria+Beach+Sithonia+Greece'},
+      {src:'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Vourvourou_village.jpg/800px-Vourvourou_village.jpg', alt:'Vourvourou', maps:'https://maps.google.com/?q=Vourvourou+Sithonia+Greece'},
+      {src:'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Sithonia_aerial.jpg/800px-Sithonia_aerial.jpg', alt:'Sithonia z góry', maps:'https://maps.google.com/?q=Sithonia+Chalkidiki+Greece'},
     ],
-    mapSrc:'https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d120000!2d23.65!3d40.18!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e0!4m5!1s0x14a8b5e1c0000001%3A0x1!2sFourka+Kassandra!3m2!1d40.002!2d23.384!4m5!1s0x14a89adcb4000001%3A0x1!2sKalogria+Beach+Sithonia!3m2!1d40.177!2d23.715!5e0!3m2!1spl!2spl!4v1',
+    mapSrc:'https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d150000!2d23.58!3d40.14!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e0!4m5!1s0x14a8b5b9f1b00001%3A0x1!2sFourka!3m2!1d40.002!2d23.384!4m5!1s0x14a89adcb4100001%3A0x1!2sKalogria+Beach!3m2!1d40.177!2d23.715!5e0!3m2!1spl!2spl!4v1',
     mapLink:'https://maps.google.com/maps/dir/Fourka+Greece/Kalogria+Beach+Sithonia/Vourvourou+Greece',
     stops:[
-      {time:'8:30', type:'drive', name:'Wyjazd z hotelu', desc:'Ok. 1h 15min do Kalogrii. Wcześnie – uniknąć korków na moście.'},
-      {time:'9:45', type:'beach', name:'Kalogria Beach ★4.6', desc:'Turkusowa woda, naturalne cienie od drzew, leżaki 20€. Świetna do snorkelingu. Parkuj od strony Isla Beach.'},
-      {time:'14:30', type:'drive', name:'Wyjazd do Vourvourou', desc:'Ok. 20 min wzdłuż wybrzeża.'},
-      {time:'15:00', type:'food', name:'Gorgona or Pullman ★4.4 – Vourvourou', desc:'Tawerna nad samą wodą. Moussaka, nadziewana oberżyna, plac zabaw dla dzieci. Lody gratis! Tel: +30 2375 091461'},
-      {time:'18:00', type:'drive', name:'Powrót do hotelu', desc:'Ok. 1h 15min.'}
+      {time:'8:30', type:'drive', name:'Wyjazd z hotelu', desc:'Ok. 1h 15min. Wyjazd wcześnie – uniknąć korków na moście.', maps:null},
+      {time:'9:45', type:'beach', name:'Kalogria Beach ★4.6', desc:'Turkusowa woda, naturalne cienie, leżaki 20€. Świetna do snorkelingu przy skałach. Parkuj od strony Isla Beach.', maps:'https://maps.google.com/?q=Kalogria+Beach+Sithonia+Greece'},
+      {time:'14:30', type:'drive', name:'Wyjazd do Vourvourou', desc:'Ok. 20 min wzdłuż wybrzeża.', maps:null},
+      {time:'15:00', type:'food', name:'Gorgona or Pullman ★4.4', desc:'Tawerna nad samą wodą. Moussaka, nadziewana oberżyna. Plac zabaw. Lody gratis! Tel: +30 2375 091461', maps:'https://maps.google.com/?q=Gorgona+Vourvourou+Sithonia+Greece'},
+      {time:'18:00', type:'drive', name:'Powrót do hotelu', desc:'Ok. 1h 15min.', maps:null}
     ],
-    tip:'Parking przy Kalogrii zatłoczony od 10:00 – parkuj od strony Isla Beach i idź na plażę od północy.'
+    tip:'Parking przy Kalogrii zatłoczony od 10:00 – parkuj od strony Isla Beach.'
   },
   {
     date:'30.06', weekday:'Wtorek', type:'culture',
-    title:'Starożytny Olynthos + Nikiti Beach + Panos Fish',
+    title:'Olynthos + Nikiti Beach + Panos Fish',
     sub:'Mozaiki z V w. p.n.e., plaża, najlepsza tawerna Chalkidiki',
     open:false,
     photos:[
-      {src:'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Olynthus_mosaic.jpg/800px-Olynthus_mosaic.jpg', alt:'Mozaiki Olynthos'},
-      {src:'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Nikiti_beach_Sithonia.jpg/800px-Nikiti_beach_Sithonia.jpg', alt:'Nikiti Beach'},
-      {src:'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Neos_Marmaras_Sithonia.jpg/800px-Neos_Marmaras_Sithonia.jpg', alt:'Neos Marmaras'},
+      {src:'https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Olynthos_ruins.jpg/800px-Olynthos_ruins.jpg', alt:'Ruiny Olynthos', maps:'https://maps.google.com/?q=Ancient+Olynthos+Archaeological+Site+Greece'},
+      {src:'https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Nikiti_beach.jpg/800px-Nikiti_beach.jpg', alt:'Nikiti Beach', maps:'https://maps.google.com/?q=Nikiti+Beach+Sithonia+Greece'},
+      {src:'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Neos_Marmaras_port.jpg/800px-Neos_Marmaras_port.jpg', alt:'Port Neos Marmaras', maps:'https://maps.google.com/?q=Neos+Marmaras+Sithonia+Greece'},
     ],
-    mapSrc:'https://www.google.com/maps/embed?pb=!1m34!1m12!1m3!1d180000!2d23.55!3d40.22!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m19!3e0!4m5!1s0x14a8b5e1c0000001%3A0x1!2sFourka!3m2!1d40.002!2d23.384!4m5!1s0x14a8a2c2c1000001%3A0x1!2sOlynthos+Greece!3m2!1d40.289!2d23.353!4m5!1s0x14a891dc6d000001%3A0x1!2sNikiti+Beach!3m2!1d40.21!2d23.673!5e0!3m2!1spl!2spl!4v1',
-    mapLink:'https://maps.google.com/maps/dir/Fourka+Greece/Olynthos+Archaeological+Site/Nikiti+Beach+Greece/Neos+Marmaras+Greece',
+    mapSrc:'https://www.google.com/maps/embed?pb=!1m34!1m12!1m3!1d200000!2d23.5!3d40.2!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m19!3e0!4m5!1s0x14a8b5b9f1b00001%3A0x1!2sFourka!3m2!1d40.002!2d23.384!4m5!1s0x14a8a3c2c1000001%3A0x1!2sOlynthos!3m2!1d40.289!2d23.353!4m5!1s0x14a891dc6d000001%3A0x1!2sNikiti!3m2!1d40.21!2d23.673!5e0!3m2!1spl!2spl!4v1',
+    mapLink:'https://maps.google.com/maps/dir/Fourka+Greece/Ancient+Olynthos/Nikiti+Beach/Neos+Marmaras+Greece',
     stops:[
-      {time:'8:30', type:'drive', name:'Wyjazd z hotelu', desc:'Ok. 40 min do Olynthos.'},
-      {time:'9:00', type:'culture', name:'Stanowisko Archeologiczne Olynthos ★4.2', desc:'Miasto z V w. p.n.e., mozaiki in situ. Bilet 2€. Wygodne buty, spacer ~1km pod górę. Dzieci szukają żółwi! Otwarte 8:30–15:30. Nieczynne we wtorki.'},
-      {time:'11:00', type:'drive', name:'Wyjazd na Nikiti Beach', desc:'Ok. 50 min.'},
-      {time:'12:00', type:'beach', name:'Nikiti Beach ★4.4', desc:'Długa piaszczysta plaża, spokojna woda idealna dla dzieci. Restauracje w pobliżu.'},
-      {time:'14:30', type:'drive', name:'Wyjazd do Neos Marmaras', desc:'Ok. 40 min.'},
-      {time:'15:30', type:'food', name:'Panos Fish Tavern ★4.8', desc:'Najlepiej oceniana tawerna na Chalkidiki (6469 opinii)! Owoce morza, makaron z langustynkami. Czynne od 12:30. REZERWACJA OBOWIĄZKOWA – Tel: +30 2375 072381'},
-      {time:'18:30', type:'drive', name:'Powrót do hotelu', desc:'Ok. 1h.'}
+      {time:'8:30', type:'drive', name:'Wyjazd z hotelu', desc:'Ok. 40 min do Olynthos.', maps:null},
+      {time:'9:00', type:'culture', name:'Stanowisko Archeologiczne Olynthos ★4.2', desc:'Miasto z V w. p.n.e., mozaiki in situ. Bilet 2€. Wygodne buty, spacer ~1km. Dzieci szukają żółwi! Otwarte 8:30–15:30. Nieczynne we wtorki.', maps:'https://maps.google.com/?q=Ancient+Olynthos+Greece'},
+      {time:'11:00', type:'drive', name:'Wyjazd na Nikiti Beach', desc:'Ok. 50 min.', maps:null},
+      {time:'12:00', type:'beach', name:'Nikiti Beach ★4.4', desc:'Długa piaszczysta plaża, spokojna woda dla dzieci. Bary w pobliżu.', maps:'https://maps.google.com/?q=Nikiti+Beach+Sithonia'},
+      {time:'14:30', type:'drive', name:'Wyjazd do Neos Marmaras', desc:'Ok. 40 min.', maps:null},
+      {time:'15:30', type:'food', name:'Panos Fish Tavern ★4.8', desc:'Najlepiej oceniana tawerna na Chalkidiki! Owoce morza, makaron z langustynkami. Czynne od 12:30. REZERWACJA OBOWIĄZKOWA – Tel: +30 2375 072381', maps:'https://maps.google.com/?q=Panos+Fish+Tavern+Neos+Marmaras'},
+      {time:'18:30', type:'drive', name:'Powrót do hotelu', desc:'Ok. 1h.', maps:null}
     ],
-    tip:'UWAGA: Olynthos nieczynne we wtorki – jeśli 30.06 to wtorek, zamień z innym dniem.'
+    tip:'UWAGA: Olynthos nieczynne we wtorki! Jeśli 30.06 to wtorek, zamień z innym dniem.'
   },
   {
     date:'01.07', weekday:'Środa', type:'beach',
     title:'Sithonia Południowa: Sarti + Porto Koufo + Tzitzikas',
-    sub:'Widok na Górę Athos, kameralna zatoka, najlepszy grill półwyspu',
+    sub:'Widok na Górę Athos, kameralna zatoka, grill nad wodą',
     open:false,
     photos:[
-      {src:'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Sarti_beach_Mount_Athos.jpg/800px-Sarti_beach_Mount_Athos.jpg', alt:'Sarti Beach i Góra Athos'},
-      {src:'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Porto_Koufo_Sithonia.jpg/800px-Porto_Koufo_Sithonia.jpg', alt:'Porto Koufo'},
-      {src:'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Mount_Athos_from_Ouranoupolis.jpg/800px-Mount_Athos_from_Ouranoupolis.jpg', alt:'Góra Athos'},
+      {src:'https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Sarti_beach_Halkidiki.jpg/800px-Sarti_beach_Halkidiki.jpg', alt:'Plaża Sarti', maps:'https://maps.google.com/?q=Sarti+Beach+Sithonia+Greece'},
+      {src:'https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Porto_Koufo_bay.jpg/800px-Porto_Koufo_bay.jpg', alt:'Zatoka Porto Koufo', maps:'https://maps.google.com/?q=Porto+Koufo+Sithonia+Greece'},
+      {src:'https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Mount_Athos_from_sea.jpg/800px-Mount_Athos_from_sea.jpg', alt:'Góra Athos z morza', maps:'https://maps.google.com/?q=Mount+Athos+Greece'},
     ],
-    mapSrc:'https://www.google.com/maps/embed?pb=!1m34!1m12!1m3!1d200000!2d23.75!3d40.03!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m19!3e0!4m5!1s0x14a8b5e1c0000001%3A0x1!2sFourka!3m2!1d40.002!2d23.384!4m5!1s0x14a8a79e14000001%3A0x1!2sSarti+Beach!3m2!1d40.09!2d23.979!4m5!1s0x14a8a1d1e3000001%3A0x1!2sPorto+Koufo!3m2!1d39.964!2d23.926!5e0!3m2!1spl!2spl!4v1',
-    mapLink:'https://maps.google.com/maps/dir/Fourka+Greece/Sarti+Beach+Greece/Porto+Koufo+Greece',
+    mapSrc:'https://www.google.com/maps/embed?pb=!1m34!1m12!1m3!1d220000!2d23.75!3d40.03!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m19!3e0!4m5!1s0x14a8b5b9f1b00001%3A0x1!2sFourka!3m2!1d40.002!2d23.384!4m5!1s0x14a8a79e14100001%3A0x1!2sSarti+Beach!3m2!1d40.09!2d23.979!4m5!1s0x14a8a1d1e3100001%3A0x1!2sPorto+Koufo!3m2!1d39.964!2d23.926!5e0!3m2!1spl!2spl!4v1',
+    mapLink:'https://maps.google.com/maps/dir/Fourka+Greece/Sarti+Beach+Greece/Porto+Koufo+Sithonia',
     stops:[
-      {time:'8:30', type:'drive', name:'Wyjazd z hotelu', desc:'Ok. 1h 45min do Sarti.'},
-      {time:'10:15', type:'beach', name:'Sarti Beach ★4.6', desc:'Długa plaża z widokiem na Górę Athos. Leżaki bezpłatne przy konsumpcji. Bywa wietrznie, morze szybko głębokie.'},
-      {time:'13:00', type:'drive', name:'Wyjazd do Porto Koufo', desc:'Ok. 20 min na południe.'},
-      {time:'13:30', type:'beach', name:'Porto Koufo Beach ★4.6', desc:'Naturalna zatoka – spokojne, płytkie wody dla dzieci. Świetny snorkeling. Kameralna miejscowość rybacka.'},
-      {time:'15:30', type:'food', name:'Taverna Tzitzikas ★4.7', desc:'5507 opinii! Ośmiornica z grilla, sardynki, świeże ryby, deser gratis. tzitzikas.eu · REZERWACJA – Tel: +30 2375 051270'},
-      {time:'19:00', type:'drive', name:'Powrót do hotelu', desc:'Ok. 2h.'}
+      {time:'8:30', type:'drive', name:'Wyjazd z hotelu', desc:'Ok. 1h 45min do Sarti.', maps:null},
+      {time:'10:15', type:'beach', name:'Sarti Beach ★4.6', desc:'Długa plaża z widokiem na Górę Athos. Leżaki bezpłatne przy konsumpcji. Bywa wietrznie, morze szybko głębokie.', maps:'https://maps.google.com/?q=Sarti+Beach+Sithonia+Greece'},
+      {time:'13:00', type:'drive', name:'Wyjazd do Porto Koufo', desc:'Ok. 20 min na południe.', maps:null},
+      {time:'13:30', type:'beach', name:'Porto Koufo Beach ★4.6', desc:'Naturalna zatoka – spokojne, płytkie wody dla dzieci. Świetny snorkeling. Kameralna miejscowość rybacka.', maps:'https://maps.google.com/?q=Porto+Koufo+Sithonia+Greece'},
+      {time:'15:30', type:'food', name:'Taverna Tzitzikas ★4.7', desc:'5507 opinii! Ośmiornica z grilla, sardynki, deser gratis. tzitzikas.eu · REZERWACJA – Tel: +30 2375 051270', maps:'https://maps.google.com/?q=Taverna+Tzitzikas+Porto+Koufo'},
+      {time:'19:00', type:'drive', name:'Powrót do hotelu', desc:'Ok. 2h.', maps:null}
     ],
     tip:null
   },
@@ -418,45 +677,44 @@ const days = [
     sub:'Dzika plaża snorkelingowa, spacer, ostatnia kolacja z owocami morza',
     open:false,
     photos:[
-      {src:'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Fava_Beach_Vourvourou.jpg/800px-Fava_Beach_Vourvourou.jpg', alt:'Fava Beach'},
-      {src:'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Neos_Marmaras_harbor.jpg/800px-Neos_Marmaras_harbor.jpg', alt:'Port Neos Marmaras'},
-      {src:'https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Sithonia_turquoise_water.jpg/800px-Sithonia_turquoise_water.jpg', alt:'Turkusowe wody Sithonii'},
+      {src:'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Fava_Beach_Sithonia.jpg/800px-Fava_Beach_Sithonia.jpg', alt:'Fava Beach', maps:'https://maps.google.com/?q=Fava+Beach+Vourvourou+Greece'},
+      {src:'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Neos_Marmaras_town.jpg/800px-Neos_Marmaras_town.jpg', alt:'Neos Marmaras', maps:'https://maps.google.com/?q=Neos+Marmaras+Sithonia+Greece'},
     ],
-    mapSrc:'https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d180000!2d23.65!3d40.14!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e0!4m5!1s0x14a8b5e1c0000001%3A0x1!2sFourka!3m2!1d40.002!2d23.384!4m5!1s0x14a89ac2d0000001%3A0x1!2sFava+Beach+Vourvourou!3m2!1d40.185!2d23.819!5e0!3m2!1spl!2spl!4v1',
+    mapSrc:'https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d180000!2d23.65!3d40.14!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e0!4m5!1s0x14a8b5b9f1b00001%3A0x1!2sFourka!3m2!1d40.002!2d23.384!4m5!1s0x14a89ac2d0100001%3A0x1!2sFava+Beach+Vourvourou!3m2!1d40.185!2d23.819!5e0!3m2!1spl!2spl!4v1',
     mapLink:'https://maps.google.com/maps/dir/Fourka+Greece/Fava+Beach+Vourvourou/Neos+Marmaras+Greece',
     stops:[
-      {time:'8:45', type:'drive', name:'Wyjazd z hotelu', desc:'Ok. 1h 20min do Fava Beach.'},
-      {time:'10:00', type:'beach', name:'Fava Beach ★4.6', desc:'Dzika plaża – krystalicznie czysta woda, kolorowe kamyki, idealna do snorkelingu. Zabrać własne rzeczy, jedzenie i wodę!'},
-      {time:'14:00', type:'drive', name:'Wyjazd do Neos Marmaras', desc:'Ok. 30 min.'},
-      {time:'14:30', type:'culture', name:'Spacer po Neos Marmaras', desc:'Klimatyczna promenada, sklepiki, lody. Ostatnie pamiątki przed powrotem!'},
-      {time:'16:00', type:'food', name:'Okyalos Sea Food Restaurant ★4.4', desc:'Makaron z homarami, nadziewane kalmary, grillowane krewetki z widokiem na morze. okyalos.gr'},
-      {time:'19:00', type:'drive', name:'Powrót do hotelu', desc:'Ok. 1h. Ostatnia noc na Chalkidiki!'}
+      {time:'8:45', type:'drive', name:'Wyjazd z hotelu', desc:'Ok. 1h 20min do Fava Beach.', maps:null},
+      {time:'10:00', type:'beach', name:'Fava Beach ★4.6', desc:'Dzika plaża – krystalicznie czysta woda, kolorowe kamyki, idealna do snorkelingu. Zabrać własne rzeczy!', maps:'https://maps.google.com/?q=Fava+Beach+Vourvourou+Greece'},
+      {time:'14:00', type:'drive', name:'Wyjazd do Neos Marmaras', desc:'Ok. 30 min.', maps:null},
+      {time:'14:30', type:'culture', name:'Spacer po Neos Marmaras', desc:'Klimatyczna promenada, sklepiki, lody. Ostatnie pamiątki!', maps:'https://maps.google.com/?q=Neos+Marmaras+Sithonia+Greece'},
+      {time:'16:00', type:'food', name:'Okyalos Sea Food ★4.4', desc:'Makaron z homarami, kalmary, krewetki z widokiem na morze. okyalos.gr', maps:'https://maps.google.com/?q=Okyalos+Restaurant+Neos+Marmaras'},
+      {time:'19:00', type:'drive', name:'Powrót do hotelu', desc:'Ok. 1h. Ostatnia noc na Chalkidiki!', maps:null}
     ],
     tip:null
   },
   {
     date:'03.07', weekday:'Piątek', type:'road',
     title:'Wyjazd: Fourka → Saloniki → Vergina → Kalambaka',
-    sub:'Checkout, Saloniki, królewskie grobowce, nocleg pod Meteorą',
+    sub:'Checkout, zwiedzanie po drodze, nocleg pod Meteorą',
     open:false,
     photos:[
-      {src:'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/White_Tower_of_Thessaloniki.jpg/800px-White_Tower_of_Thessaloniki.jpg', alt:'Biała Wieża Saloniki'},
-      {src:'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Vergina_Golden_Larnax.jpg/800px-Vergina_Golden_Larnax.jpg', alt:'Złota urna z Werginy'},
-      {src:'https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Arch_of_Galerius_Thessaloniki.jpg/800px-Arch_of_Galerius_Thessaloniki.jpg', alt:'Łuk Galeriusza'},
+      {src:'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/White_Tower_of_Thessaloniki_2.jpg/800px-White_Tower_of_Thessaloniki_2.jpg', alt:'Biała Wieża Saloniki', maps:'https://maps.google.com/?q=White+Tower+Thessaloniki+Greece'},
+      {src:'https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Vergina_sun_on_gold_larnax.jpg/800px-Vergina_sun_on_gold_larnax.jpg', alt:'Złota urna z Werginy', maps:'https://maps.google.com/?q=Vergina+Royal+Tombs+Greece'},
+      {src:'https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Arch_of_Galerius.jpg/800px-Arch_of_Galerius.jpg', alt:'Łuk Galeriusza', maps:'https://maps.google.com/?q=Arch+of+Galerius+Thessaloniki'},
     ],
-    mapSrc:'https://www.google.com/maps/embed?pb=!1m34!1m12!1m3!1d400000!2d22.5!3d40.2!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m19!3e0!4m5!1s0x14a8b5e1c0000001%3A0x1!2sFourka+Kassandra!3m2!1d40.002!2d23.384!4m5!1s0x14a839a3c8af3e91%3A0x85de6c8b9e6d4a70!2sSaloniki!3m2!1d40.629!2d22.948!4m5!1s0x14a8b22900000001%3A0x1!2sVergina+Greece!3m2!1d40.487!2d22.32!5e0!3m2!1spl!2spl!4v1',
+    mapSrc:'https://www.google.com/maps/embed?pb=!1m34!1m12!1m3!1d500000!2d22.4!3d40.2!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m19!3e0!4m5!1s0x14a8b5b9f1b00001%3A0x1!2sFourka!3m2!1d40.002!2d23.384!4m5!1s0x14a839a3c8af3e91%3A0x85de6c8b9e6d4a70!2sSaloniki!3m2!1d40.629!2d22.948!4m5!1s0x14a8b22900100001%3A0x1!2sVergina+Greece!3m2!1d40.487!2d22.32!5e0!3m2!1spl!2spl!4v1',
     mapLink:'https://maps.google.com/maps/dir/Fourka+Greece/Thessaloniki/Vergina+Greece/Kalambaka+Greece',
     stops:[
-      {time:'9:00', type:'beach', name:'Ostatnia kąpiel + checkout', desc:'Pożegnanie z morzem, pakowanie, wymeldowanie z AlexMare Hotel.'},
-      {time:'11:00', type:'drive', name:'Wyjazd do Salonik', desc:'Ok. 1h 30min.'},
-      {time:'12:30', type:'culture', name:'Biała Wieża (Saloniki)', desc:'Ikona Salonik z muzeum – 6€/os., dzieci do 12 lat gratis. Widok na Morze Egejskie. Lunch przy Placu Arystotelesa.'},
-      {time:'14:30', type:'culture', name:'Łuk Galeriusza (Kamara)', desc:'Łuk triumfalny z IV w. n.e., 5 min spacerem od placu. Bezpłatny.'},
-      {time:'15:30', type:'drive', name:'Wyjazd do Werginy', desc:'Ok. 1h.'},
-      {time:'16:30', type:'culture', name:'Królewskie Grobowce w Werginie (Aigai) ★★', desc:'Muzeum nad grobowcem Filipa II, ojca Aleksandra Wielkiego! Złote skarby in situ. Bilet 20€/os. Czynne do 20:00. We wtorek otwarte od 12:00.'},
-      {time:'18:30', type:'drive', name:'Wyjazd do Kalambaki', desc:'Ok. 2h jazdy.'},
-      {time:'~20:30', type:'rest', name:'Hotel Meteora, Kalambaka – zameldowanie', desc:'Kolacja w mieście, nocleg. Jutro Meteora!'}
+      {time:'9:00', type:'beach', name:'Ostatnia kąpiel + checkout', desc:'Pożegnanie z morzem, pakowanie, wymeldowanie z AlexMare Hotel.', maps:'https://maps.google.com/?q=AlexMare+Hotel+Fourka'},
+      {time:'11:00', type:'drive', name:'Wyjazd do Salonik', desc:'Ok. 1h 30min.', maps:null},
+      {time:'12:30', type:'culture', name:'Biała Wieża + Plac Arystotelesa', desc:'Muzeum w środku – 6€/os., dzieci do 12 lat gratis. Widok na Morze Egejskie. Lunch przy Placu.', maps:'https://maps.google.com/?q=White+Tower+Thessaloniki'},
+      {time:'14:30', type:'culture', name:'Łuk Galeriusza (Kamara)', desc:'Łuk z IV w. n.e., 5 min spacerem od placu. Bezpłatny.', maps:'https://maps.google.com/?q=Arch+of+Galerius+Thessaloniki'},
+      {time:'15:30', type:'drive', name:'Wyjazd do Werginy', desc:'Ok. 1h.', maps:null},
+      {time:'16:30', type:'culture', name:'Królewskie Grobowce w Werginie ★★', desc:'Muzeum nad grobowcem Filipa II, ojca Aleksandra Wielkiego! Bilet 20€/os. Czynne do 20:00.', maps:'https://maps.google.com/?q=Vergina+Royal+Tombs+Archaeological+Museum'},
+      {time:'18:30', type:'drive', name:'Wyjazd do Kalambaki', desc:'Ok. 2h jazdy.', maps:null},
+      {time:'~20:30', type:'rest', name:'Hotel Meteora, Kalambaka', desc:'Zameldowanie. Kolacja w mieście, nocleg.', maps:'https://maps.google.com/?q=Hotel+Meteora+Kalambaka+Greece'}
     ],
-    tip:'Wergina to absolutny hit dla dzieci – złote grobowce Aleksandra Macedońskiego robią ogromne wrażenie.'
+    tip:'Wergina to absolutny hit dla dzieci – złote grobowce Aleksandra Macedońskiego robią ogromne wrażenie!'
   },
   {
     date:'04.07', weekday:'Sobota', type:'finale',
@@ -464,31 +722,31 @@ const days = [
     sub:'Klasztory na skałach, powrót na lotnisko, lot do Poznania',
     open:false,
     photos:[
-      {src:'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Meteora_monasteries_panoramic.jpg/800px-Meteora_monasteries_panoramic.jpg', alt:'Panorama Meteory'},
-      {src:'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Meteora_Great_Meteoron.jpg/800px-Meteora_Great_Meteoron.jpg', alt:'Wielki Meteoron'},
-      {src:'https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Meteora_rocks_sunrise.jpg/800px-Meteora_rocks_sunrise.jpg', alt:'Skały Meteory o świcie'},
+      {src:'https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Meteora_monasteries.jpg/800px-Meteora_monasteries.jpg', alt:'Klasztory Meteory', maps:'https://maps.google.com/?q=Meteora+Monasteries+Greece'},
+      {src:'https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Great_Meteoron_monastery.jpg/800px-Great_Meteoron_monastery.jpg', alt:'Wielki Meteoron', maps:'https://maps.google.com/?q=Great+Meteoron+Monastery+Greece'},
+      {src:'https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Meteora_sunrise.jpg/800px-Meteora_sunrise.jpg', alt:'Meteora o świcie', maps:'https://maps.google.com/?q=Meteora+viewpoint+Greece'},
     ],
-    mapSrc:'https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d100000!2d21.63!3d39.72!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e0!4m5!1s0x135ea35900000001%3A0x1!2sKalambaka+Hotel+Meteora!3m2!1d39.705!2d21.628!4m5!1s0x135ea3e000000001%3A0x1!2sMeteora+Monasteries!3m2!1d39.721!2d21.631!5e0!3m2!1spl!2spl!4v1',
-    mapLink:'https://maps.google.com/maps/dir/Kalambaka+Greece/Meteora+Monasteries/Thessaloniki+Airport',
+    mapSrc:'https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d80000!2d21.63!3d39.72!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e0!4m5!1s0x135ea35900100001%3A0x1!2sKalambaka!3m2!1d39.705!2d21.628!4m5!1s0x135ea3e000100001%3A0x1!2sMeteora!3m2!1d39.721!2d21.631!5e0!3m2!1spl!2spl!4v1',
+    mapLink:'https://maps.google.com/maps/dir/Kalambaka+Greece/Meteora+Monasteries/Thessaloniki+Airport+SKG',
     stops:[
-      {time:'8:30', type:'culture', name:'Główny punkt widokowy Meteory', desc:'Zacznijcie tu przed tłumem! Panorama skał i klasztorów. Dojazd samochodem.'},
-      {time:'9:15', type:'culture', name:'Zwiedzanie 2–3 klasztorów', desc:'5€/os. za każdy, dzieci poniżej 12 lat bezpłatnie. Kobiety muszą mieć spódnicę (pożyczają na miejscu). Wygodne buty, dużo schodów!'},
-      {time:'13:30', type:'food', name:'Lunch w Kalambace', desc:'Ostatni grecki obiad – piekarnia lub tawerna przy głównej ulicy.'},
-      {time:'14:30', type:'drive', name:'Wyjazd do Salonik', desc:'Ok. 2h. Lot o 23:20 – dużo czasu!'},
-      {time:'16:30', type:'drive', name:'Lotnisko Saloniki (SKG)', desc:'Zwrot samochodu, odprawa, wolny czas lub kolacja przy lotnisku.'},
-      {time:'23:20', type:'drive', name:'Wylot do Poznania (POZ)', desc:'Lot Ryanair FR2553. Przylot 00:40 – powrót do domu!'}
+      {time:'8:30', type:'culture', name:'Główny punkt widokowy Meteory', desc:'Przed tłumem! Panorama skał i klasztorów. Dojazd samochodem.', maps:'https://maps.google.com/?q=Meteora+main+viewpoint+Greece'},
+      {time:'9:15', type:'culture', name:'Zwiedzanie 2–3 klasztorów', desc:'5€/os. za każdy, dzieci poniżej 12 lat gratis. Kobiety muszą mieć spódnicę (pożyczają na miejscu). Wygodne buty, dużo schodów!', maps:'https://maps.google.com/?q=Meteora+Monasteries+Greece'},
+      {time:'13:30', type:'food', name:'Lunch w Kalambace', desc:'Ostatni grecki obiad – piekarnia lub tawerna przy głównej ulicy.', maps:'https://maps.google.com/?q=Kalambaka+restaurants+Greece'},
+      {time:'14:30', type:'drive', name:'Wyjazd do Salonik', desc:'Ok. 2h. Lot o 23:20 – dużo czasu!', maps:null},
+      {time:'16:30', type:'drive', name:'Lotnisko Saloniki (SKG)', desc:'Zwrot samochodu, odprawa, wolny czas lub kolacja przy lotnisku.', maps:'https://maps.google.com/?q=Thessaloniki+Airport+SKG'},
+      {time:'23:20', type:'drive', name:'Wylot do Poznania (POZ)', desc:'Lot Ryanair FR2553. Przylot 00:40 – powrót do domu!', maps:null}
     ],
-    tip:'Sierpień to szczyt sezonu w Meteorze – tłoczno po godz. 10:00. Warto być na miejscu jak najwcześniej.'
+    tip:'Sierpień to szczyt sezonu – tłoczno po 10:00. Warto być na miejscu jak najwcześniej i zabrać dużo wody.'
   }
 ];
 
+// ---- BUILD DAYS ----
 function buildDays() {
   const container = document.getElementById('days-container');
   days.forEach((day, i) => {
     const block = document.createElement('div');
     block.className = 'day-block';
 
-    // Header
     const header = document.createElement('div');
     header.className = 'day-header ' + day.type;
     header.innerHTML = `
@@ -497,9 +755,8 @@ function buildDays() {
         <p class="day-title-text">${day.title}</p>
         <p class="day-sub">${day.weekday} · ${day.sub}</p>
       </div>
-      <span class="day-chevron ${day.open ? 'open' : ''}" id="chev-${i}">▼</span>`;
+      <span class="day-chevron ${day.open?'open':''}" id="chev-${i}">▼</span>`;
 
-    // Body
     const body = document.createElement('div');
     body.className = 'day-body';
     body.id = 'body-' + i;
@@ -512,7 +769,12 @@ function buildDays() {
       day.photos.forEach(p => {
         const wrap = document.createElement('div');
         wrap.className = 'photo-thumb';
-        wrap.innerHTML = `<img src="${p.src}" alt="${p.alt}" onerror="this.parentElement.style.display='none'"><p class="photo-caption">${p.alt}</p>`;
+        wrap.innerHTML = `
+          <a href="${p.maps}" target="_blank" title="Otwórz w Google Maps">
+            <img src="${p.src}" alt="${p.alt}" onerror="this.parentElement.parentElement.style.display='none'">
+          </a>
+          <p class="photo-caption">${p.alt}</p>
+          <a class="photo-gmaps" href="${p.maps}" target="_blank">▶ Google Maps</a>`;
         strip.appendChild(wrap);
       });
       body.appendChild(strip);
@@ -527,13 +789,15 @@ function buildDays() {
     mapLink.className = 'map-open-link';
     mapLink.href = day.mapLink;
     mapLink.target = '_blank';
-    mapLink.innerHTML = '&#9654; Otwórz trasę w Google Maps';
+    mapLink.textContent = '▶ Otwórz trasę dnia w Google Maps';
     body.appendChild(mapLink);
 
     // Stops
     day.stops.forEach(stop => {
       const stopEl = document.createElement('div');
       stopEl.className = 'stop';
+      const tag = stop.type !== 'drive' ? `<span class="stop-tag tag-${stop.type}">${tagLabels[stop.type]||stop.type}</span>` : '';
+      const mapsLink = stop.maps ? `<a class="stop-gmaps" href="${stop.maps}" target="_blank">▶ Google Maps</a>` : '';
       stopEl.innerHTML = `
         <div class="stop-timeline">
           <span class="stop-time-label">${stop.time}</span>
@@ -546,16 +810,15 @@ function buildDays() {
         <div class="stop-content">
           <p class="stop-name">${stop.name}</p>
           <p class="stop-desc">${stop.desc}</p>
-          ${stop.type !== 'drive' ? `<span class="stop-tag tag-${stop.type}">${tagLabels[stop.type] || stop.type}</span>` : ''}
+          <div class="stop-links">${tag}${mapsLink}</div>
         </div>`;
       body.appendChild(stopEl);
     });
 
-    // Tip
     if (day.tip) {
       const tip = document.createElement('div');
       tip.className = 'tip-strip';
-      tip.innerHTML = `<span class="tip-icon">!</span><span>${day.tip}</span>`;
+      tip.innerHTML = `<span>⚠</span><span>${day.tip}</span>`;
       body.appendChild(tip);
     }
 
