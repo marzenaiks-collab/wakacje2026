@@ -169,6 +169,24 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);fon
 /* DIVIDER */
 .divider{height:1px;background:var(--border);margin:28px 0}
 
+/* MONASTERY TABLE */
+.monastery-section{margin:12px 20px 0;border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.monastery-section-title{background:var(--purple-light);padding:10px 16px;font-size:12px;font-weight:500;color:var(--purple);text-transform:uppercase;letter-spacing:1px;border-bottom:1px solid #c8b8e8}
+.monastery-table{width:100%;border-collapse:collapse;font-size:13px}
+.monastery-table th{background:#f7f5fb;padding:8px 10px;text-align:left;font-size:11px;font-weight:500;color:var(--text-muted);border-bottom:1px solid var(--border);white-space:nowrap}
+.monastery-table td{padding:9px 10px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.4}
+.monastery-table tr:last-child td{border-bottom:none}
+.monastery-table tr:hover td{background:#faf8ff}
+.mon-name{font-weight:500;color:var(--text)}
+.mon-priority{display:inline-block;font-size:10px;padding:1px 6px;border-radius:8px;margin-left:4px}
+.pri-1{background:#fdf5e0;color:#8a6a00}
+.pri-2{background:#e8f4f8;color:var(--sea)}
+.pri-opt{background:#f1f1f1;color:#666}
+.mon-note{font-size:11px;color:var(--text-muted);margin-top:2px}
+.mon-open{color:var(--olive);font-weight:500;font-size:12px}
+.mon-maps{font-size:11px;color:var(--sea);text-decoration:none}
+.mon-maps:hover{text-decoration:underline}
+.monastery-legend{padding:10px 14px;background:#fffbf0;border-top:1px solid #f0e4b0;font-size:12px;color:#7a5f10;display:flex;flex-wrap:wrap;gap:10px}
 footer{text-align:center;padding:28px 20px;font-size:12px;color:var(--text-muted);border-top:1px solid var(--border)}
 
 @media(max-width:520px){
@@ -719,24 +737,29 @@ const days = [
   {
     date:'04.07', weekday:'Sobota', type:'finale',
     title:'Meteora → Saloniki → Lot do domu',
-    sub:'Klasztory na skałach, powrót na lotnisko, lot do Poznania',
+    sub:'6 klasztorów otwartych (sobota!), powrót na lotnisko',
     open:false,
     photos:[
-      {src:'https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Meteora_monasteries.jpg/800px-Meteora_monasteries.jpg', alt:'Klasztory Meteory', maps:'https://maps.google.com/?q=Meteora+Monasteries+Greece'},
+      {src:'https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Meteora_monasteries.jpg/800px-Meteora_monasteries.jpg', alt:'Panorama Meteory', maps:'https://maps.google.com/?q=Meteora+Monasteries+Greece'},
       {src:'https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Great_Meteoron_monastery.jpg/800px-Great_Meteoron_monastery.jpg', alt:'Wielki Meteoron', maps:'https://maps.google.com/?q=Great+Meteoron+Monastery+Greece'},
       {src:'https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Meteora_sunrise.jpg/800px-Meteora_sunrise.jpg', alt:'Meteora o świcie', maps:'https://maps.google.com/?q=Meteora+viewpoint+Greece'},
+      {src:'https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Varlaam_Monastery_Meteora.jpg/800px-Varlaam_Monastery_Meteora.jpg', alt:'Klasztor Varlaam', maps:'https://maps.google.com/?q=Varlaam+Monastery+Meteora'},
     ],
-    mapSrc:'https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d80000!2d21.63!3d39.72!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e0!4m5!1s0x135ea35900100001%3A0x1!2sKalambaka!3m2!1d39.705!2d21.628!4m5!1s0x135ea3e000100001%3A0x1!2sMeteora!3m2!1d39.721!2d21.631!5e0!3m2!1spl!2spl!4v1',
-    mapLink:'https://maps.google.com/maps/dir/Kalambaka+Greece/Meteora+Monasteries/Thessaloniki+Airport+SKG',
+    mapSrc:'https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d25000!2d21.627!3d39.718!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e0!4m5!1s0x135ea35900100001%3A0x1!2sKalambaka!3m2!1d39.705!2d21.628!4m5!1s0x135ea3e000100001%3A0x1!2sMeteora+Monasteries!3m2!1d39.721!2d21.631!5e0!3m2!1spl!2spl!4v1',
+    mapLink:'https://maps.google.com/maps/dir/Kalambaka+Greece/Great+Meteoron+Monastery/Varlaam+Monastery+Meteora/Rousanou+Monastery+Meteora/Thessaloniki+Airport+SKG',
+    monasteries: true,
     stops:[
-      {time:'8:30', type:'culture', name:'Główny punkt widokowy Meteory', desc:'Przed tłumem! Panorama skał i klasztorów. Dojazd samochodem.', maps:'https://maps.google.com/?q=Meteora+main+viewpoint+Greece'},
-      {time:'9:15', type:'culture', name:'Zwiedzanie 2–3 klasztorów', desc:'5€/os. za każdy, dzieci poniżej 12 lat gratis. Kobiety muszą mieć spódnicę (pożyczają na miejscu). Wygodne buty, dużo schodów!', maps:'https://maps.google.com/?q=Meteora+Monasteries+Greece'},
-      {time:'13:30', type:'food', name:'Lunch w Kalambace', desc:'Ostatni grecki obiad – piekarnia lub tawerna przy głównej ulicy.', maps:'https://maps.google.com/?q=Kalambaka+restaurants+Greece'},
-      {time:'14:30', type:'drive', name:'Wyjazd do Salonik', desc:'Ok. 2h. Lot o 23:20 – dużo czasu!', maps:null},
-      {time:'16:30', type:'drive', name:'Lotnisko Saloniki (SKG)', desc:'Zwrot samochodu, odprawa, wolny czas lub kolacja przy lotnisku.', maps:'https://maps.google.com/?q=Thessaloniki+Airport+SKG'},
-      {time:'23:20', type:'drive', name:'Wylot do Poznania (POZ)', desc:'Lot Ryanair FR2553. Przylot 00:40 – powrót do domu!', maps:null}
+      {time:'8:00', type:'culture', name:'Punkt widokowy – Panorama Meteory', desc:'Start przed tłumem! Główny viewpoint przy drodze do klasztorów – zapierający dech widok na wszystkie skały naraz. Dojazd samochodem, mały parking przy barierach.', maps:'https://maps.google.com/?q=Meteora+panorama+viewpoint+Greece'},
+      {time:'8:30', type:'culture', name:'1. Wielki Meteoron (Grand Meteoron) ★★★', desc:'PRIORYTET NR 1. Największy i najstarszy klasztor (XIV w.), na najwyższej skale (613 m n.p.m.). Imponujące freski, muzeum z relikwiami i złotymi przedmiotami. 350 wykutych schodów w górę – warto! Bilet: 5€/os., dzieci do 12 lat gratis. Czas zwiedzania: ok. 45–60 min.', maps:'https://maps.google.com/?q=Great+Meteoron+Monastery+Meteora+Greece'},
+      {time:'9:45', type:'culture', name:'2. Varlaam ★★★', desc:'PRIORYTET NR 2. Drugi co do wielkości, tuż obok Meteoronu. Słynne freski z XVI w. (Sąd Ostateczny!), stara sieć lin do wciągania zapasów. Kościół wyjątkowo pięknie zdobiony. Bilet: 5€/os. Czas: ok. 40 min. Czynny 9:00–16:00.', maps:'https://maps.google.com/?q=Varlaam+Monastery+Meteora+Greece'},
+      {time:'10:45', type:'culture', name:'3. Roussanou ★★', desc:'Klasztor zamieszkany przez mniszki, zbudowany dosłownie na czubku wąskiej skały – widok z zewnątrz robi ogromne wrażenie! Najpiękniejszy ogród wśród wszystkich klasztorów. Bilet: 5€/os. Czynny 9:00–16:30. Czas: ok. 30 min.', maps:'https://maps.google.com/?q=Roussanou+Monastery+Meteora+Greece'},
+      {time:'11:30', type:'culture', name:'4. Święta Trójca (Holy Trinity) ★★ – opcjonalnie', desc:'Ten klasztor widzieliście w filmie James Bond "Tylko dla twoich oczu" (1981)! Najbardziej efektowne położenie, najtrudniejszy dojazd – 140 stromych schodów wykutych w skale. Bilet: 5€/os. Czynny 10:00–16:00. Czas: ok. 35 min. Dla chętnych – dzieci mogą mieć trudności ze schodami.', maps:'https://maps.google.com/?q=Holy+Trinity+Monastery+Meteora+Greece'},
+      {time:'12:30', type:'food', name:'Lunch w Kalambace', desc:'Ostatni grecki obiad! Polecane: Taverna Meteora przy głównej ulicy, lub piekarnia z lokalnymi wypiekami na wynos.', maps:'https://maps.google.com/?q=restaurants+Kalambaka+Greece'},
+      {time:'14:00', type:'drive', name:'Wyjazd do Salonik', desc:'Ok. 2h do lotniska. Lot dopiero o 23:20 – macie dużo czasu!', maps:null},
+      {time:'16:30', type:'drive', name:'Lotnisko Saloniki (SKG)', desc:'Zwrot samochodu, odprawa. Wolny czas na zakupy na lotnisku lub kolacja w pobliżu.', maps:'https://maps.google.com/?q=Thessaloniki+Airport+SKG'},
+      {time:'23:20', type:'drive', name:'Wylot do Poznania (POZ)', desc:'Lot Ryanair FR2553. Przylot do Poznania 00:40 – powrót do domu!', maps:null}
     ],
-    tip:'Sierpień to szczyt sezonu – tłoczno po 10:00. Warto być na miejscu jak najwcześniej i zabrać dużo wody.'
+    tip:'4 lipca to SOBOTA – wszystkie 6 klasztorów otwarte! Płatność TYLKO gotówką. Zabrać: drobne euro, buty na schodach, spódnicę dla kobiet (lub pożyczyć na miejscu za darmo).'
   }
 ];
 
@@ -778,6 +801,83 @@ function buildDays() {
         strip.appendChild(wrap);
       });
       body.appendChild(strip);
+    }
+
+    // Monastery table (only for day with monasteries:true)
+    if (day.monasteries) {
+      const msec = document.createElement('div');
+      msec.className = 'monastery-section';
+      msec.innerHTML = `
+        <div class="monastery-section-title">⛪ 4 lipca = SOBOTA – wszystkie 6 klasztorów otwarte! Płatność TYLKO gotówką · 5€/os. · dzieci do 12 lat gratis</div>
+        <div style="overflow-x:auto">
+        <table class="monastery-table">
+          <thead><tr>
+            <th>Klasztor</th>
+            <th>Godziny (lato)</th>
+            <th>Bilet</th>
+            <th>Dla nas</th>
+            <th>Uwagi</th>
+            <th>Mapa</th>
+          </tr></thead>
+          <tbody>
+            <tr>
+              <td><span class="mon-name">Wielki Meteoron</span><span class="mon-priority pri-1">★ Priorytet 1</span><p class="mon-note">Największy, najstarszy (XIV w.)</p></td>
+              <td><span class="mon-open">9:30–15:00</span></td>
+              <td>5€<br><small>dzieci 0€</small></td>
+              <td>KONIECZNIE</td>
+              <td>613 m n.p.m. · ~350 schodów · muzeum ze skarbami · 45–60 min</td>
+              <td><a class="mon-maps" href="https://maps.google.com/?q=Great+Meteoron+Monastery+Meteora" target="_blank">▶ Maps</a></td>
+            </tr>
+            <tr>
+              <td><span class="mon-name">Varlaam</span><span class="mon-priority pri-1">★ Priorytet 2</span><p class="mon-note">Freski Sądu Ostatecznego</p></td>
+              <td><span class="mon-open">9:00–16:00</span></td>
+              <td>5€<br><small>dzieci 0€</small></td>
+              <td>KONIECZNIE</td>
+              <td>Tuż obok Meteoronu · stara sieć lin do wciągania · 40 min</td>
+              <td><a class="mon-maps" href="https://maps.google.com/?q=Varlaam+Monastery+Meteora" target="_blank">▶ Maps</a></td>
+            </tr>
+            <tr>
+              <td><span class="mon-name">Roussanou</span><span class="mon-priority pri-2">Priorytet 3</span><p class="mon-note">Zamieszkany przez mniszki</p></td>
+              <td><span class="mon-open">9:00–16:30</span></td>
+              <td>5€<br><small>dzieci 0€</small></td>
+              <td>WARTO</td>
+              <td>Na czubku wąskiej skały · piękny ogród · łatwy dostęp · 30 min</td>
+              <td><a class="mon-maps" href="https://maps.google.com/?q=Roussanou+Monastery+Meteora" target="_blank">▶ Maps</a></td>
+            </tr>
+            <tr>
+              <td><span class="mon-name">Święta Trójca</span><span class="mon-priority pri-opt">Opcjonalnie</span><p class="mon-note">Bond – "Tylko dla Twoich oczu"</p></td>
+              <td><span class="mon-open">10:00–16:00</span></td>
+              <td>5€<br><small>dzieci 0€</small></td>
+              <td>DLA CHĘTNYCH</td>
+              <td>140 stromych schodów w skale · najmniej dostępny · 35 min</td>
+              <td><a class="mon-maps" href="https://maps.google.com/?q=Holy+Trinity+Monastery+Meteora" target="_blank">▶ Maps</a></td>
+            </tr>
+            <tr>
+              <td><span class="mon-name">Św. Szczepan (Agios Stefanos)</span><span class="mon-priority pri-opt">Opcjonalnie</span><p class="mon-note">Zamieszkany przez mniszki</p></td>
+              <td><span class="mon-open">9:00–13:30<br>15:30–17:30</span></td>
+              <td>5€<br><small>dzieci 0€</small></td>
+              <td>JEŚLI CZAS</td>
+              <td>Najłatwiejszy dojazd · most zamiast schodów · piękny widok na Kalambakę · 25 min</td>
+              <td><a class="mon-maps" href="https://maps.google.com/?q=Agios+Stefanos+Monastery+Meteora" target="_blank">▶ Maps</a></td>
+            </tr>
+            <tr>
+              <td><span class="mon-name">Św. Mikołaj (Agios Nikolaos)</span><span class="mon-priority pri-opt">Opcjonalnie</span><p class="mon-note">Najstarsze freski</p></td>
+              <td><span class="mon-open">9:00–17:00</span></td>
+              <td>5€<br><small>dzieci 0€</small></td>
+              <td>JEŚLI CZAS</td>
+              <td>Pierwszy po drodze z Kastraki · dobre freski · mniej tłumów · 25 min</td>
+              <td><a class="mon-maps" href="https://maps.google.com/?q=Agios+Nikolaos+Anapafsas+Monastery+Meteora" target="_blank">▶ Maps</a></td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+        <div class="monastery-legend">
+          <span>💰 Koszt dla grupy (4 dorosłych, 2 dzieci 13+11 lat): 3 klasztory = <strong>90€</strong> · 4 klasztory = <strong>120€</strong></span>
+          <span>💵 TYLKO GOTÓWKA – wziąć drobne euro!</span>
+          <span>👗 Kobiety: spódnica poniżej kolan (pożyczają na miejscu gratis)</span>
+          <span>👟 Wygodne buty – wszędzie dużo schodów</span>
+        </div>`;
+      body.appendChild(msec);
     }
 
     // Map
