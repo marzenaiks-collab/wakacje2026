@@ -187,6 +187,26 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);fon
 .mon-maps{font-size:11px;color:var(--sea);text-decoration:none}
 .mon-maps:hover{text-decoration:underline}
 .monastery-legend{padding:10px 14px;background:#fffbf0;border-top:1px solid #f0e4b0;font-size:12px;color:#7a5f10;display:flex;flex-wrap:wrap;gap:10px}
+/* ALTERNATIVES */
+.alt-section{margin:0 20px 0;border:1px solid #d4e8c8;border-top:none;background:#f7fbf3;padding:0}
+.alt-toggle{display:flex;align-items:center;gap:8px;padding:11px 16px;cursor:pointer;user-select:none;font-size:13px;font-weight:500;color:var(--olive);background:#edf6e4;border-top:1px solid #d4e8c8}
+.alt-toggle:hover{background:#e2f0d6}
+.alt-chevron{font-size:10px;transition:transform .2s;margin-left:auto}
+.alt-chevron.open{transform:rotate(180deg)}
+.alt-body{display:none;padding:12px 16px 14px}
+.alt-body.open{display:block}
+.alt-item{display:flex;gap:12px;padding:10px 0;border-bottom:1px solid #dff0d6}
+.alt-item:last-child{border-bottom:none;padding-bottom:0}
+.alt-emoji{font-size:22px;flex-shrink:0;width:32px;text-align:center;margin-top:1px}
+.alt-content{flex:1}
+.alt-name{font-size:14px;font-weight:500;color:var(--text);margin-bottom:3px}
+.alt-desc{font-size:13px;color:var(--text-muted);line-height:1.5}
+.alt-meta{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px;align-items:center}
+.alt-badge{font-size:11px;padding:2px 8px;border-radius:10px;background:#edf6e4;color:var(--olive)}
+.alt-badge.price{background:var(--gold-light);color:#8a6a00}
+.alt-badge.time{background:var(--sea-light);color:var(--sea)}
+.alt-maps{font-size:11px;color:var(--sea);text-decoration:none;display:inline-flex;align-items:center;gap:3px}
+.alt-maps:hover{text-decoration:underline}
 footer{text-align:center;padding:28px 20px;font-size:12px;color:var(--text-muted);border-top:1px solid var(--border)}
 
 @media(max-width:520px){
@@ -389,6 +409,38 @@ footer{text-align:center;padding:28px 20px;font-size:12px;color:var(--text-muted
     </div>
     <div class="market-map-embed">
       <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d3000!2d23.385!3d40.001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1ssupermarket+Skala+Fourkas!5e0!3m2!1spl!2spl!4v1" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+    <p style="font-size:13px;font-weight:500;color:var(--text);margin:18px 0 10px">📍 Inne przydatne miejsca w Skala Fourkas</p>
+    <div class="market-cards">
+      <div class="market-card">
+        <span class="mbadge">☕ Piekarnia · cukiernia · kawiarnia</span>
+        <p class="market-card-name">Sakali Bakery Patisserie Cafe</p>
+        <p class="market-card-addr">Skala Fourkas · przy głównej ulicy</p>
+        <p class="market-hours">Świeże pieczywo, wypieki, ciasta, kawa. Idealne na śniadanie przed wyjazdem na plażę!</p>
+        <p class="market-tip">Tel: +30 2374 042090 · Instagram: @sakali_bakery_patisserie_cafe_</p>
+        <a class="map-btn" href="https://www.google.com/maps/place/Sakali+Bakery+Patisserie+Cafe/@39.9970011,23.3895592,17z" target="_blank">▶ Google Maps</a>
+      </div>
+      <div class="market-card">
+        <span class="mbadge">🛒 Supermarket · blisko hotelu</span>
+        <p class="market-card-name">Super Market Kalinka</p>
+        <p class="market-card-addr">Skala Fourkas · ~200m od hotelu</p>
+        <p class="market-hours">Woda, przekąski, owoce, codzienne zakupy przed wyjazdem na plażę.</p>
+        <a class="map-btn" href="https://maps.app.goo.gl/ViQ9rW2FthsMpyY7A" target="_blank">▶ Google Maps</a>
+      </div>
+      <div class="market-card">
+        <span class="mbadge">🎁 Pamiątki · rękodzieło</span>
+        <p class="market-card-name">Sklep z pamiątkami</p>
+        <p class="market-card-addr">Skala Fourkas · w okolicach hotelu</p>
+        <p class="market-hours">Lokalne pamiątki, ceramika, biżuteria, greckie produkty. Warto zajrzeć przed wyjazdem!</p>
+        <a class="map-btn" href="https://maps.app.goo.gl/TANppn5oiGmrBbcf8" target="_blank">▶ Google Maps</a>
+      </div>
+      <div class="market-card">
+        <span class="mbadge">🏪 Sklep spożywczy</span>
+        <p class="market-card-name">Sklep spożywczy</p>
+        <p class="market-card-addr">Skala Fourkas · w pobliżu hotelu</p>
+        <p class="market-hours">Artykuły spożywcze, napoje, przekąski – dobry na szybkie uzupełnienie zapasów.</p>
+        <a class="map-btn" href="https://maps.app.goo.gl/vSYMrBH9YUMqoqGt5" target="_blank">▶ Google Maps</a>
+      </div>
     </div>
   </div>
 
@@ -599,7 +651,8 @@ const days = [
       {time:'23:30', type:'drive', name:'Transfer na Chalkidiki – ok. 1,5h', desc:'Nocna trasa przez Saloniki i most na Kassandrę. Dzieci śpią w samochodzie.', maps:null},
       {time:'~01:00', type:'rest', name:'AlexMare Hotel Fourka', desc:'Zameldowanie i nocleg. Jutro zaczyna się prawdziwy urlop!', maps:'https://maps.google.com/?q=AlexMare+Hotel+Fourka+Greece'}
     ],
-    tip:null
+    tip:null,
+    alts:[]
   },
   {
     date:'28.06', weekday:'Niedziela', type:'beach',
@@ -621,7 +674,12 @@ const days = [
       {time:'16:00', type:'food', name:'Taverna To Steki ★4.6', desc:'Legendarna tawerna – świeże ryby, jagnięcina z rusztu. Tel: +30 2374 091142. Zadzwoń wcześniej!', maps:'https://maps.google.com/?q=Taverna+To+Steki+Afytos+Greece'},
       {time:'19:00', type:'drive', name:'Powrót do hotelu', desc:'Ok. 15 min jazdy.', maps:null}
     ],
-    tip:'Na Possidi zabrać własny parasol, leżaki, duży zapas wody i jedzenia – brak sklepów i barów.'
+    tip:'Na Possidi zabrać własny parasol, leżaki, duży zapas wody i jedzenia – brak sklepów i barów.',
+    alts:[
+      {emoji:'🦕', name:'Jaskinia Petralona', time:'~40 min od Fourki', price:'10€/os. · dzieci do 18 lat gratis', desc:'Jaskinia z 700 000-letnią czaszką najstarszego Europejczyka! Stalaktyty, stalagmity, prehistoryczne lwy i nosorożce. Zwiedzanie z przewodnikiem ~20 min. TYLKO GOTÓWKA.', maps:'https://maps.google.com/?q=Petralona+Cave+Chalkidiki'},
+      {emoji:'🌿', name:'Arnaia – górska wioska z kamiennymi domami', time:'~50 min od Fourki', price:'bezpłatnie', desc:'Najpiękniejsza tradycyjna wioska Chalkidiki – kamienne domy z drewnianymi balkonami, brukowane uliczki, lokalne sklepy z miodem i winem. Zupełnie inne oblicze Grecji.', maps:'https://maps.google.com/?q=Arnaia+Chalkidiki+Greece'},
+      {emoji:'💦', name:'Crazyland – nadmuchiwany park wodny na morzu', time:'~30 min od Fourki · Pefkochori', price:'25€ cały dzień · 10€/h', desc:'Ogromne dmuchane atrakcje wprost w morzu! Dla dzieci powyżej 6 lat i dorosłych. Leżaki gratis przy zakupie drinka w sąsiednim beach barze Faros.', maps:'https://maps.google.com/?q=Crazyland+Water+Park+Pefkochori+Chalkidiki'}
+    ]
   },
   {
     date:'29.06', weekday:'Poniedziałek', type:'beach',
@@ -642,7 +700,12 @@ const days = [
       {time:'15:00', type:'food', name:'Gorgona or Pullman ★4.4', desc:'Tawerna nad samą wodą. Moussaka, nadziewana oberżyna. Plac zabaw. Lody gratis! Tel: +30 2375 091461', maps:'https://maps.google.com/?q=Gorgona+Vourvourou+Sithonia+Greece'},
       {time:'18:00', type:'drive', name:'Powrót do hotelu', desc:'Ok. 1h 15min.', maps:null}
     ],
-    tip:'Parking przy Kalogrii zatłoczony od 10:00 – parkuj od strony Isla Beach.'
+    tip:'Parking przy Kalogrii zatłoczony od 10:00 – parkuj od strony Isla Beach.',
+    alts:[
+      {emoji:'⛵', name:'Rejs szklanym dnem – Blue Lagoon + Ammouliani', time:'6h · wyjazd z Ouranoupoli (~1,5h od Fourki)', price:'ok. 40–50€/os. · obiad BBQ wliczony', desc:'Szklane dno przepływa nad żółtymi koralami, 1,5h pływania w turkusowej lagunie (głęb. 2m), lunch BBQ na pokładzie, plaża na wyspie Ammouliani. Jeden z najlepiej ocenianych rejsów w Grecji!', maps:'https://maps.google.com/?q=Ouranoupoli+port+Chalkidiki'},
+      {emoji:'🏄', name:'Sporty wodne – kajaki, SUP, windsurfing', time:'przy Vourvourou lub Nikiti', price:'od 15€/h', desc:'Wypożyczalnie sprzętu wodnego przy większości plaż Sithonii. Kajaki idealne dla dzieci, SUP dla dorosłych. Szkoła windsurfingu dostępna w Nikiti.', maps:'https://maps.google.com/?q=water+sports+Vourvourou+Sithonia'},
+      {emoji:'🐟', name:'Nurkowanie z instruktorem – Atlantis Diving Center', time:'Sithonia · cały dzień', price:'od 75€/os. · dla początkujących i dzieci', desc:'Certyfikowane centrum nurkowania na Sithonii – scorpionfish, okonie, dno pokryte anemonami. Wycieczki dla zupełnych początkujących z transportem.', maps:'https://maps.google.com/?q=Atlantis+Diving+Center+Sithonia+Chalkidiki'}
+    ]
   },
   {
     date:'30.06', weekday:'Wtorek', type:'culture',
@@ -665,7 +728,12 @@ const days = [
       {time:'15:30', type:'food', name:'Panos Fish Tavern ★4.8', desc:'Najlepiej oceniana tawerna na Chalkidiki! Owoce morza, makaron z langustynkami. Czynne od 12:30. REZERWACJA OBOWIĄZKOWA – Tel: +30 2375 072381', maps:'https://maps.google.com/?q=Panos+Fish+Tavern+Neos+Marmaras'},
       {time:'18:30', type:'drive', name:'Powrót do hotelu', desc:'Ok. 1h.', maps:null}
     ],
-    tip:'UWAGA: Olynthos nieczynne we wtorki! Jeśli 30.06 to wtorek, zamień z innym dniem.'
+    tip:'UWAGA: Olynthos nieczynne we wtorki! Jeśli 30.06 to wtorek, zamień z innym dniem.',
+    alts:[
+      {emoji:'💦', name:'Waterland – największy park wodny w Grecji', time:'~1h od Fourki · przy autostradzie do Salonik', price:'22€ dorośli · 18€ dzieci 4–11 lat', desc:'Crazy River, fale, zjeżdżalnie, strefa dla dzieci, mini zoo. Otwarty 10:00–19:00. Kup bilety online taniej. Świetna alternatywa na upalny dzień!', maps:'https://maps.google.com/?q=Waterland+Waterpark+Tagarades+Thessaloniki'},
+      {emoji:'🏛️', name:'Poligyros – stolica Chalkidiki + muzeum', time:'~45 min od Fourki', price:'muzeum 3€', desc:'Górskie miasteczko z autentycznym greckim klimatem. Targ z lokalnymi produktami, muzeum archeologiczne, kawiarnie z widokiem na góry.', maps:'https://maps.google.com/?q=Polygyros+Chalkidiki+Greece'},
+      {emoji:'🐴', name:'Jazda konna przez sosnowe lasy', time:'okolice Kassandry · ~30 min od Fourki', price:'od 30€/os.', desc:'Przejażdżki przez sosnowe lasy i wzdłuż wybrzeża. Idealne dla dzieci od 6 lat. Pytaj w hotelu o najbliższą stajnię.', maps:'https://maps.google.com/?q=horse+riding+Kassandra+Chalkidiki'}
+    ]
   },
   {
     date:'01.07', weekday:'Środa', type:'beach',
@@ -687,7 +755,12 @@ const days = [
       {time:'15:30', type:'food', name:'Taverna Tzitzikas ★4.7', desc:'5507 opinii! Ośmiornica z grilla, sardynki, deser gratis. tzitzikas.eu · REZERWACJA – Tel: +30 2375 051270', maps:'https://maps.google.com/?q=Taverna+Tzitzikas+Porto+Koufo'},
       {time:'19:00', type:'drive', name:'Powrót do hotelu', desc:'Ok. 2h.', maps:null}
     ],
-    tip:null
+    tip:null,
+    alts:[
+      {emoji:'🌊', name:'Rejs wzdłuż Góry Athos + wyspa Ammouliani', time:'wyjazd z Ouranoupoli · 5–6h', price:'35–50€/os. · lunch wliczony', desc:'Przepłynięcie wzdłuż klasztorów Athos – jedyna opcja dla kobiet i dzieci! Pływanie w Blue Lagoon, postój na Ammouliani.', maps:'https://maps.google.com/?q=Ouranoupoli+port+Chalkidiki'},
+      {emoji:'🏘️', name:'Parthenonas – opuszczona górska wioska', time:'~1,5h od Fourki · Sithonia', price:'bezpłatnie', desc:'Półopuszczona wioska ottomańska z 320 m n.p.m. z panoramicznym widokiem na zatoki Sithonii. Jedno z najpiękniejszych miejsc w regionie, prawie bez turystów.', maps:'https://maps.google.com/?q=Parthenonas+village+Sithonia+Chalkidiki'},
+      {emoji:'🍷', name:'Degustacja oliwy i wina – lokalna farma', time:'okolice Kassandry', price:'od 20–30€/os.', desc:'Farm-to-table z własnym ogrodem i zwierzętami. Produkty prosto z farmy, lokalne wino i oliwa z oliwek. Bardzo lubiane przez dzieci dzięki kontaktowi ze zwierzętami.', maps:'https://maps.google.com/?q=wine+tasting+olive+oil+Chalkidiki+Greece'}
+    ]
   },
   {
     date:'02.07', weekday:'Czwartek', type:'beach',
@@ -708,7 +781,12 @@ const days = [
       {time:'16:00', type:'food', name:'Okyalos Sea Food ★4.4', desc:'Makaron z homarami, kalmary, krewetki z widokiem na morze. okyalos.gr', maps:'https://maps.google.com/?q=Okyalos+Restaurant+Neos+Marmaras'},
       {time:'19:00', type:'drive', name:'Powrót do hotelu', desc:'Ok. 1h. Ostatnia noc na Chalkidiki!', maps:null}
     ],
-    tip:null
+    tip:null,
+    alts:[
+      {emoji:'🏺', name:'Jaskinia Petralona – prehistoria i stalaktyty', time:'~40 min od Fourki · po drodze z Sithonii', price:'10€/os. · dzieci do 18 lat gratis', desc:'700 000-letnia czaszka najstarszego Europejczyka, stalaktyty i stalagmity w fantastycznej jaskini. Zwiedzanie z przewodnikiem ~20 min. Idealne na powrót z Sithonii!', maps:'https://maps.google.com/?q=Petralona+Cave+Chalkidiki'},
+      {emoji:'🌿', name:'Wodospady Varvara – las i przyroda', time:'~1,5h od Fourki', price:'bezpłatnie', desc:'Dwa ukryte wodospady w gęstym lesie bukowym – spacer 5–10 min od parkingu. Idealne ochłodzenie w upalny dzień. Bajkowa atmosfera, dzieci zachwycone!', maps:'https://maps.google.com/?q=Varvara+Waterfalls+Chalkidiki+Greece'},
+      {emoji:'🛶', name:'Kayak lub SUP – wynajem sprzętu wodnego', time:'Vourvourou lub Nikiti Beach', price:'od 15€/h', desc:'Wypożycz kajak lub SUP i odkryj ukryte zatoczki Sithonii od strony wody. Można dopłynąć do małych plaż niedostępnych z lądu. Dla całej rodziny.', maps:'https://maps.google.com/?q=kayak+rental+Vourvourou+Sithonia'}
+    ]
   },
   {
     date:'03.07', weekday:'Piątek', type:'road',
@@ -732,7 +810,11 @@ const days = [
       {time:'18:30', type:'drive', name:'Wyjazd do Kalambaki', desc:'Ok. 2h jazdy.', maps:null},
       {time:'~20:30', type:'rest', name:'Hotel Meteora, Kalambaka', desc:'Zameldowanie. Kolacja w mieście, nocleg.', maps:'https://maps.google.com/?q=Hotel+Meteora+Kalambaka+Greece'}
     ],
-    tip:'Wergina to absolutny hit dla dzieci – złote grobowce Aleksandra Macedońskiego robią ogromne wrażenie!'
+    tip:'Wergina to absolutny hit dla dzieci – złote grobowce Aleksandra Macedońskiego robią ogromne wrażenie!',
+    alts:[
+      {emoji:'🏛️', name:'Muzeum Byzantyjskie w Salonikach', time:'Saloniki · po drodze', price:'8€/os. · dzieci gratis', desc:'Jedno z najlepszych muzeów Bizancjum w Grecji – mozaiki, ikony, złote biżuterie. Klimatyzowane! Dobre gdy masz czas przed Werginą.', maps:'https://maps.google.com/?q=Byzantine+Museum+Thessaloniki'},
+      {emoji:'🛍️', name:'Bazar Modiano i centrum Salonik', time:'Saloniki · po drodze', price:'bezpłatnie', desc:'Historyczna hala targowa z 1922 r., lokalne smakołyki, świeże ryby, ser, oliwki. Świetne miejsce na lunch i zakupy przed dalszą drogą.', maps:'https://maps.google.com/?q=Modiano+Market+Thessaloniki'}
+    ]
   },
   {
     date:'04.07', weekday:'Sobota', type:'finale',
@@ -920,6 +1002,42 @@ function buildDays() {
       tip.className = 'tip-strip';
       tip.innerHTML = `<span>⚠</span><span>${day.tip}</span>`;
       body.appendChild(tip);
+    }
+
+    // Alternatives
+    if (day.alts && day.alts.length > 0) {
+      const altSec = document.createElement('div');
+      altSec.className = 'alt-section';
+      const altToggle = document.createElement('div');
+      altToggle.className = 'alt-toggle';
+      altToggle.innerHTML = `<span>🔀</span><span>Alternatywy na ten dzień (${day.alts.length})</span><span class="alt-chevron" id="alt-chev-${i}">▼</span>`;
+      const altBody = document.createElement('div');
+      altBody.className = 'alt-body';
+      altBody.id = `alt-body-${i}`;
+      day.alts.forEach(alt => {
+        altBody.innerHTML += `<div class="alt-item">
+          <div class="alt-emoji">${alt.emoji}</div>
+          <div class="alt-content">
+            <p class="alt-name">${alt.name}</p>
+            <p class="alt-desc">${alt.desc}</p>
+            <div class="alt-meta">
+              <span class="alt-badge time">⏱ ${alt.time}</span>
+              <span class="alt-badge price">💶 ${alt.price}</span>
+              <a class="alt-maps" href="${alt.maps}" target="_blank">▶ Google Maps</a>
+            </div>
+          </div>
+        </div>`;
+      });
+      altToggle.addEventListener('click', () => {
+        const ab = document.getElementById(`alt-body-${i}`);
+        const ac = document.getElementById(`alt-chev-${i}`);
+        const isOpen = ab.classList.contains('open');
+        ab.classList.toggle('open', !isOpen);
+        ac.classList.toggle('open', !isOpen);
+      });
+      altSec.appendChild(altToggle);
+      altSec.appendChild(altBody);
+      body.appendChild(altSec);
     }
 
     header.addEventListener('click', () => {
